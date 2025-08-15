@@ -427,7 +427,7 @@ header {
       .account-link {
         width: 1.1rem;
         height: 1.1rem;
-        background: url('~Src/assets/search.svg') no-repeat;
+        background: url('~/assets/search.svg') no-repeat;
         background-size: contain;
         pointer-events: none;
         transition: all 0.25s;
@@ -447,13 +447,13 @@ header {
       // padding: 1.02rem !important;
 
       .favorite {
-        background: url('~Src/assets/heart.svg') no-repeat center !important;
+        background: url('~/assets/heart.svg') no-repeat center !important;
       }
     }
 
     .account-link-wrapper .account-link {
       width: 1.45rem !important;
-      background: url('~Src/assets/account.svg') no-repeat center !important;
+      background: url('~/assets/account.svg') no-repeat center !important;
     }
 
     //shared product styles
@@ -821,7 +821,7 @@ header {
       height: 100%;
       top: 0;
       left: 0;
-      background: url('~Src/assets/cart-icon.svg') no-repeat;
+      background: url('~/assets/cart-icon.svg') no-repeat;
       background-position: center;
       background-size: contain;
     }
