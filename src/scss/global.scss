@@ -1,10 +1,15 @@
 @use 'sass:color';
 @use 'sass:math';
-@use './variables.scss' as *;
 
 //------------------
 // SCSS VARS
 //------------------
+@use './variables.scss' as *;
+
+//------------------
+// FONT
+//------------------
+@use './fonts.scss';
 
 //------------------
 // GRID
