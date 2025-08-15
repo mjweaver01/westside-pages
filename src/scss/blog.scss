@@ -34,7 +34,7 @@ $box-shadow:
     padding: 1.25em;
     padding-bottom: 0 !important;
 
-    @media (max-width: $tablet - 1) {
+    @media (max-width: calc($tablet - 1px)) {
       flex-basis: 100%;
       max-width: 100%;
       grid-template-columns: 1fr;
@@ -92,7 +92,7 @@ $box-shadow:
   }
 
   .blog-main-row {
-    @media (max-width: #{$tablet - 1}) {
+    @media (max-width: calc($tablet - 1px)) {
       flex-flow: column-reverse;
     }
   }
@@ -113,7 +113,7 @@ $box-shadow:
   }
 
   .blog-right-area {
-    @media (max-width: $tablet - 1) {
+    @media (max-width: calc($tablet - 1px)) {
       &.article-right-area {
         padding-top: 1.25em;
       }

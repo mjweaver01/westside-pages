@@ -276,7 +276,7 @@
     }
 
     .options-wrapper {
-      @media (min-width: $mobile - 100) and (max-width: $desktop) {
+      @media (min-width: calc($mobile - 100px)) and (max-width: $desktop) {
         .swatches-wrapper {
           flex-basis: 50%;
         }

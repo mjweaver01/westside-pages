@@ -134,7 +134,7 @@
   }
 }
 
-@media (max-width: $tablet - 1) {
+@media (max-width: calc($tablet - 1px)) {
   .hide-to-tablet {
     display: none;
   }

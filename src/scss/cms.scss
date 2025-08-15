@@ -52,7 +52,7 @@
       }
 
       //mobile column-6 full width
-      @media (max-width: $tablet - 1) {
+      @media (max-width: calc($tablet - 1px)) {
         &:not(.grid) {
           [class*='column'] {
             flex-basis: 100% !important;
@@ -215,7 +215,7 @@
     .westside-header,
     .story-of,
     .record-board-wrapper {
-      @media (max-width: $tablet - 1) {
+      @media (max-width: calc($tablet - 1px)) {
         div {
           position: relative;
           padding: 1em;
@@ -246,15 +246,15 @@
     .westside-header-text h1 {
       line-height: 0.9;
 
-      @media (max-width: $max-width - 1) {
+      @media (max-width: calc($max-width - 1px)) {
         font-size: 3em;
       }
 
-      @media (max-width: $desktop - 1) {
+      @media (max-width: calc($desktop - 1px)) {
         font-size: 2.5em;
       }
 
-      @media (max-width: $mobile - 1) {
+      @media (max-width: calc($mobile - 1px)) {
         font-size: 2em;
       }
     }
@@ -282,7 +282,7 @@
           }
         }
 
-        @media (max-width: $tablet - 1) {
+        @media (max-width: calc($tablet - 1px)) {
           div[class*='column'] {
             padding-bottom: 0;
             margin: 0;
@@ -453,7 +453,7 @@
       .row {
         padding: 0;
 
-        @media (max-width: $tablet - 1) {
+        @media (max-width: calc($tablet - 1px)) {
           &,
           .image-row {
             padding: 0;

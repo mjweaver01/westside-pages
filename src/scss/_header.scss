@@ -254,7 +254,7 @@ header {
               }
             }
 
-            @media (max-width: $desktop - 1) {
+            @media (max-width: calc($desktop - 1px)) {
               &:hover,
               &:active {
                 background: $black;

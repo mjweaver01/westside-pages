@@ -101,7 +101,7 @@ $logo-link-height: 68px;
         font-size: 26px;
         line-height: 1.2;
 
-        @media (min-width: $tablet) and (max-width: $desktop - 1) {
+        @media (min-width: $tablet) and (max-width: calc($desktop - 1px)) {
           font-size: 3.5em;
         }
 
@@ -207,7 +207,7 @@ $logo-link-height: 68px;
     }
 
     .newsletter-success-description br {
-      @media (max-width: $tablet - 1) {
+      @media (max-width: calc($tablet - 1px)) {
         display: none;
       }
     }
