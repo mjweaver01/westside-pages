@@ -1,0 +1,32 @@
+{
+  "name": "westside-pages",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx --fix",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "vue": "^3.4.0",
+    "vue-router": "^4.2.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.39.1",
+    "@typescript-eslint/parser": "^8.39.1",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "@vue/eslint-config-typescript": "^14.6.0",
+    "@vue/tsconfig": "^0.8.0",
+    "eslint": "^9.33.0",
+    "eslint-plugin-vue": "^10.4.0",
+    "prettier": "^3.0.0",
+    "sass": "^1.69.0",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.2",
+    "vue-tsc": "^3.0.5"
+  }
+}

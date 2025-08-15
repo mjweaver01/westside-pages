@@ -1,0 +1,98 @@
+<template>
+  <footer class="site-footer">
+    <div class="max-width">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Westside Barbell</h3>
+          <p>The world's strongest training facility</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><RouterLink to="/">Home</RouterLink></li>
+            <li><RouterLink to="/about">About</RouterLink></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>Columbus, Ohio</p>
+          <p>info@westsidebarbell.com</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 Westside Barbell. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</template>
+
+<script setup lang="ts">
+  import { RouterLink } from 'vue-router'
+</script>
+
+<style lang="scss" scoped>
+  @use '@/scss/variables.scss' as *;
+
+  .site-footer {
+    background: $secondary-color;
+    color: $white;
+    padding: 3rem 0 1rem;
+    margin-top: auto;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    @media (min-width: $tablet) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .footer-section {
+    h3,
+    h4 {
+      color: $white;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style: none;
+
+      li {
+        margin-bottom: 0.5rem;
+
+        a {
+          color: $light-gray;
+          text-decoration: none;
+          transition: color 0.25s;
+
+          &:hover {
+            color: $white;
+          }
+        }
+      }
+    }
+
+    p {
+      color: $light-gray;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .footer-bottom {
+    border-top: 1px solid $dark-gray;
+    padding-top: 1rem;
+    text-align: center;
+
+    p {
+      color: $light-gray;
+      margin: 0;
+    }
+  }
+</style>
