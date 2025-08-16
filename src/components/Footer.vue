@@ -36,8 +36,8 @@
 </template>
 
 <script setup lang="ts">
-  import { detectIframeMode } from '@/utils/iframe'
-  import { links } from '@/utils/links'
+  import { detectIframeMode } from '../utils/iframe'
+  import { links } from '../utils/links'
   const isIframeMode = detectIframeMode()
 </script>
 
