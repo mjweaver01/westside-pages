@@ -28,18 +28,7 @@
             :class="{ 'card-shadow': image.addBoxShadow }"
           >
             <div>
-              <img
-                class="lazyload blur-up full-width"
-                :src="image.src"
-                :alt="image.alt"
-                :data-src="image.src"
-                data-widths="[360, 540, 720, 900, 1080, 1600]"
-                :data-aspectratio="image.aspectRatio"
-                data-sizes="auto"
-              />
-              <noscript>
-                <img class="lazyloaded" :src="image.src" :alt="image.alt" />
-              </noscript>
+              <img :src="image.src" :alt="image.alt" class="full-width" />
             </div>
             <p v-if="image.subtext">{{ image.subtext }}</p>
           </div>

@@ -4,7 +4,9 @@ import LouieHeader from '@/components/louie/LouieHeader.astro'
 import LouieHotlinks from '@/components/louie/LouieHotlinks.astro'
 import LouiesBackground from '@/components/louie/LouiesBackground.astro'
 import CareerEarlyLife from '@/components/louie/CareerEarlyLife.astro'
-import WSBB from '@/components/louie/wsbb.astro'
+import WSBB from '@/components/louie/WSBB.astro'
+import Elite from '@/components/louie/Elite.astro'
+import ImageSlider from '@/components/ImageSlider.vue'
 ---
 
 <BaseLayout
@@ -18,5 +20,53 @@ import WSBB from '@/components/louie/wsbb.astro'
     <LouiesBackground />
     <CareerEarlyLife />
     <WSBB />
+    <ImageSlider
+      settings={{
+        backgroundColor: '#fff',
+        addBoxShadow: false,
+        title: 'Louie Simmons Photos',
+        noTopPadding: false,
+        noBottomPadding: false,
+      }}
+      images={[
+        {
+          src: '/pages/louie/Louie_Simmons_and_Chuck_Vogelpoh.jpg',
+          alt: 'Louie Simmons and Chuck Vogelpoh',
+        },
+        {
+          src: '/pages/louie/Louie_Simmons_and_Westside_Barbe.jpg',
+          alt: 'Louie Simmons and Westside Barbell',
+        },
+        {
+          src: '/pages/louie/Louie_Simmons_Bench_Press.jpg',
+          alt: 'Louie Simmons Bench Press',
+        },
+        {
+          src: '/pages/louie/Louie_Simmons_Deadlift_Vintage.jpg',
+          alt: 'Louie Simmons Deadlift Vintage',
+        },
+        {
+          src: '/pages/louie/Louie_Simmons_Lifting_Barbell_at.jpg',
+          alt: 'Louie Simmons Lifting Barbell',
+        },
+        {
+          src: '/pages/louie/Louie_Simmons_Pushing_Car_in-Whi.jpg',
+          alt: 'Louie Simmons Pushing Car',
+        },
+        {
+          src: '/pages/louie/Louie_Simmons_Vintage_Powe.jpg',
+          alt: 'Louie Simmons Vintage Powerlifting',
+        },
+        {
+          src: '/pages/louie/Louie_Simmons_Squatting.jpg',
+          alt: 'Louie Simmons Squatting',
+        },
+        {
+          src: '/pages/louie/LouieSimmonsScouthyper.jpg',
+          alt: 'Louie Simmons with Scout Hyper',
+        },
+      ]}
+    />
+    <Elite />
   </div>
 </BaseLayout>
