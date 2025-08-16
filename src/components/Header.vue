@@ -1,5 +1,5 @@
 <template>
-  <header class="site-header">
+  <header class="site-header" :class="{ 'invert-header': invertHeader, 'menu-open': isMenuOpen }">
     <div class="max-width">
       <nav class="header-nav">
         <div class="logo">
@@ -32,6 +32,14 @@
   import HamburgerMenu from './HamburgerMenu.vue'
   import { links } from '@/links.ts'
 
+  interface Props {
+    invertHeader?: boolean
+  }
+
+  const props = withDefaults(defineProps<Props>(), {
+    invertHeader: false,
+  })
+
   const isMenuOpen = ref(false)
 
   const toggleMenu = () => {
@@ -45,11 +53,11 @@
 
 <style lang="scss" scoped>
   @use '@/scss/variables.scss' as *;
+  @use '@/scss/header.scss' as *;
 
   .site-header {
     background: $white;
-    box-shadow: $header-shadow;
-    position: fixed !important;
+    position: sticky !important;
     top: 0;
     z-index: 999;
     width: 100%;
@@ -59,12 +67,24 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
+
+    @media (min-width: $desktop) {
+      padding: 1rem 0;
+    }
   }
 
-  .logo img {
-    height: 40px;
-    width: auto;
+  .logo {
+    display: flex;
+
+    a {
+      display: flex;
+    }
+
+    img {
+      height: 40px;
+      width: auto;
+    }
   }
 
   .nav-links {
@@ -117,5 +137,32 @@
     &:hover {
       color: $primary-color;
     }
+  }
+
+  .invert-header:not(.menu-open) {
+    box-shadow: none;
+
+    .logo img {
+      filter: brightness(0) invert(1);
+    }
+
+    a,
+    :deep(a) {
+      color: $white;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    :deep(.hamburger:not(.open) .lines),
+    :deep(.hamburger:not(.open) .lines::before),
+    :deep(.hamburger:not(.open) .lines::after) {
+      background: $white !important;
+    }
+  }
+
+  .invert-header.menu-open {
+    background: $white;
   }
 </style>

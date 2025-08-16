@@ -1,6 +1,6 @@
 <template>
   <div id="app" :class="{ 'iframe-mode': isIframeMode }">
-    <Header v-if="!isIframeMode" v-cloak />
+    <Header v-if="!isIframeMode" :invert-header="invertHeader" v-cloak />
     <main>
       <slot />
     </main>
@@ -16,11 +16,13 @@
   interface Props {
     title?: string
     description?: string
+    invertHeader?: boolean
   }
 
   const props = withDefaults(defineProps<Props>(), {
     title: 'Westside Pages',
     description: "The world's strongest training facility",
+    invertHeader: true,
   })
 
   // Reactive iframe mode detection

@@ -4,10 +4,14 @@ import BaseLayoutComponent from '@/components/BaseLayout.vue'
 export interface Props {
   title?: string
   description?: string
+  invertHeader?: boolean
 }
 
-const { title = 'Westside Pages', description = "The world's strongest training facility" } =
-  Astro.props
+const {
+  title = 'Westside Pages',
+  description = "The world's strongest training facility",
+  invertHeader = false,
+} = Astro.props
 ---
 
 <!doctype html>
@@ -20,7 +24,12 @@ const { title = 'Westside Pages', description = "The world's strongest training 
     <title>{title}</title>
   </head>
   <body>
-    <BaseLayoutComponent client:load title={title} description={description}>
+    <BaseLayoutComponent
+      client:load
+      title={title}
+      description={description}
+      invertHeader={invertHeader}
+    >
       <slot />
     </BaseLayoutComponent>
   </body>
