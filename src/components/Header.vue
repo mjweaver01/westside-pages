@@ -49,9 +49,10 @@
   .site-header {
     background: $white;
     box-shadow: $header-shadow;
-    position: sticky;
+    position: fixed !important;
     top: 0;
-    z-index: 100;
+    z-index: 999;
+    width: 100%;
   }
 
   .header-nav {
