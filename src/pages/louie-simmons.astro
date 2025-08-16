@@ -4,9 +4,10 @@ import LouieHeader from '@/components/louie/LouieHeader.astro'
 import LouieHotlinks from '@/components/louie/LouieHotlinks.astro'
 import LouiesBackground from '@/components/louie/LouiesBackground.astro'
 import CareerEarlyLife from '@/components/louie/CareerEarlyLife.astro'
-import WSBB from '@/components/louie/WSBB.astro'
+import LouieWSBB from '@/components/louie/WSBB.astro'
 import Elite from '@/components/louie/Elite.astro'
 import ImageSlider from '@/components/ImageSlider.vue'
+import HorizontalAccordion from '@/components/HorizontalAccordion.astro'
 ---
 
 <BaseLayout
@@ -19,8 +20,9 @@ import ImageSlider from '@/components/ImageSlider.vue'
     <LouieHotlinks />
     <LouiesBackground />
     <CareerEarlyLife />
-    <WSBB />
+    <LouieWSBB />
     <ImageSlider
+      client:load
       settings={{
         backgroundColor: '#fff',
         addBoxShadow: false,
@@ -54,7 +56,7 @@ import ImageSlider from '@/components/ImageSlider.vue'
           alt: 'Louie Simmons Pushing Car',
         },
         {
-          src: '/pages/louie/Louie_Simmons_Vintage_Powe.jpg',
+          src: '/pages/louie/Louie_Simmons_Squat_Vintage_Powe.jpg',
           alt: 'Louie Simmons Vintage Powerlifting',
         },
         {
@@ -64,6 +66,28 @@ import ImageSlider from '@/components/ImageSlider.vue'
         {
           src: '/pages/louie/LouieSimmonsScouthyper.jpg',
           alt: 'Louie Simmons with Scout Hyper',
+        },
+      ]}
+    />
+    <HorizontalAccordion
+      sectionId="strength-training-contributions"
+      maxWidth={1360}
+      titles={{
+        title: 'Strength Training Contributions',
+        text: "<p>Louie Simmons' inventive approach to powerlifting sprang from necessity. After suffering several injuries early in his career and seeing his peers face similar predicaments, he identified the traditional approach to lifting as a common issue.</p><p>His innovative approach to athletic training secured his place in the industry, and his methodologies are still widely employed in strength sports gyms today.</p>",
+      }}
+      items={[
+        {
+          heading: 'Conjugate Method',
+          text: "<ul><li>Louie Simmons developed the revolutionary Conjugate Method in response to the traditional approach to lifting.</li><li><a href=\"https://www.westside-barbell.com/pages/conjugate-method\">The Conjugate Method</a> emphasizes training various physical attributes to enhance an athlete's fitness.</li><li>Simmons' innovative approach to athletic training secured his place in the industry, and his methodologies are still widely employed today.</li><li>Simmons received the prestigious Alvin Roy Award for Career Achievement for his significant contributions to the field of strength training.</li><li>His legacy continues to influence athletes' training, establishing him as a pioneer and titan of powerlifting and strength training.</li></ul>",
+        },
+        {
+          heading: 'Box Squats',
+          text: '<strong>Box Squats</strong><ul><li>Louie Simmons is recognized for promoting <a href="https://www.westside-barbell.com/blogs/the-blog/how-to-execute-a-proper-box-squat">box squats</a>, which have significant benefits in powerlifting training.</li><li>Box squats help improve lifting technique, increase power and strength, offer versatility in training, enhance recovery, and reinforce consistency.</li><li>Using box squats has been a crucial part of training at Westside Barbell under Simmons\'s guidance.</li></ul><div class="video-responsive-wrapper"><div class="video-responsive"><iframe width="360" height="115" src="https://www.youtube.com/embed/2m4F6jzcYCU?si=ZEjEsIN09gDLNxQS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe></div></div>',
+        },
+        {
+          heading: 'Accommodating Resistance',
+          text: "<strong>Chains &amp; Resistance Bands</strong><ul><li>Coach Dave Williams introduced Louie Simmons to Jump Stretch Bands, created by Dick Hartzell from Youngstown, Ohio.</li><li>Louie met with Dick Hartzell a week later, and Louie recognized the bands' potential to transform weight training.</li><li>Louie combined weights and band tension, realizing it as the optimal solution for resistance training.</li><li>Mel Siff visited Westside to understand how chains and rubber bands were used to maintain tension throughout a lift's range of motion.</li><li>\"Supertraining\" featured Louie's work with the Combination of Resistance Methods and his program extendable over multiple years.</li><li>Louie introduced bands and chains to modify barbell exercises, challenging muscles throughout the movement.</li><li>Chains and bands are widely adopted in strength and conditioning for overcoming plateaus and enhancing athletic performance.</li><li>Today, it's a staple in strength and conditioning, contributing to powerlifting and strength training advancements.</li></ul>",
         },
       ]}
     />
