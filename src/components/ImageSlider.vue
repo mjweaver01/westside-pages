@@ -2,67 +2,51 @@
   <div
     :style="{ backgroundColor: settings.backgroundColor }"
     class="product-list-wrapper swiper-product-list-wrapper featured-collection"
-    :data-limit="settings.productLimit"
+    :class="{
+      'no-top-padding': settings.noTopPadding,
+      'no-bottom-padding': settings.noBottomPadding,
+    }"
   >
-    <h2 class="title">{{ settings.title }}</h2>
+    <h2 v-if="settings.title" class="title">{{ settings.title }}</h2>
     <div
       class="m-slider-featured__wrapper max-width"
       :class="{ 'swiper-has-shadow': settings.addBoxShadow }"
     >
-      <div :id="swiperId" class="product-list js-swiper swiper">
+      <div
+        :id="swiperId"
+        class="product-list js-swiper swiper"
+        :class="{
+          'no-top-padding': settings.noTopPadding,
+          'no-bottom-padding': settings.noBottomPadding,
+        }"
+      >
         <div class="swiper-wrapper">
           <div
-            v-for="product in displayProducts"
-            :key="product.id"
-            class="product siema-product swiper-slide"
-            :class="{ 'card-shadow': settings.addBoxShadow }"
+            v-for="(image, index) in images"
+            :key="index"
+            class="swiper-slide"
+            :class="{ 'card-shadow': image.addBoxShadow }"
           >
-            <a class="product-image-wrapper" :href="product.url">
-              <!-- Product badges (if any) -->
-              <div v-if="product.badges?.length" class="product-badges">
-                <span v-for="badge in product.badges" :key="badge" class="product-badge">
-                  {{ badge }}
-                </span>
-              </div>
-
+            <div>
               <img
-                class="product-image lazyload blur-up"
-                :src="placeholderImage"
-                :alt="product.featuredImage.alt"
-                :data-src="product.featuredImage.src"
+                class="lazyload blur-up full-width"
+                :src="image.src"
+                :alt="image.alt"
+                :data-src="image.src"
                 data-widths="[360, 540, 720, 900, 1080, 1600]"
-                :data-aspectratio="product.featuredImage.aspectRatio"
+                :data-aspectratio="image.aspectRatio"
                 data-sizes="auto"
               />
-
               <noscript>
-                <img
-                  class="lazyloaded"
-                  :src="product.featuredImage.src"
-                  :alt="product.featuredImage.alt"
-                />
+                <img class="lazyloaded" :src="image.src" :alt="image.alt" />
               </noscript>
-            </a>
-
-            <div class="product-info">
-              <a :href="product.url">
-                <h5>{{ product.title }}</h5>
-              </a>
-              <div class="price-wrapper">
-                <h6
-                  v-if="product.compareAtPrice && product.compareAtPrice > product.price"
-                  class="original-price"
-                >
-                  ${{ formatPrice(product.compareAtPrice) }}<br />
-                </h6>
-                <h6 class="price">${{ formatPrice(product.price) }}</h6>
-              </div>
             </div>
+            <p v-if="image.subtext">{{ image.subtext }}</p>
           </div>
         </div>
       </div>
 
-      <!-- Navigation buttons -->
+      <!-- Navigation buttons - Box Shadow Style -->
       <div v-if="settings.addBoxShadow" :class="`swiper-button-next js-sw-n-${componentId}`">
         <svg
           width="47"
@@ -109,6 +93,7 @@
         </svg>
       </div>
 
+      <!-- Navigation buttons - Default Style -->
       <div v-if="!settings.addBoxShadow" :class="`swiper-button-next js-sw-n-${componentId}`">
         <svg
           width="47"
@@ -149,19 +134,9 @@
       </div>
 
       <!-- Pagination -->
-      <div class="m-sw-pg">
-        <div :class="`swiper-pagination js-pg-${componentId}`"></div>
+      <div class="m-sw-pg cs">
+        <div :class="`swiper-pagination js-pg-n-${componentId}`"></div>
       </div>
-    </div>
-
-    <!-- Shop link button -->
-    <div v-if="settings.shopLinkText" class="product-collection-link center-text">
-      <a
-        :href="collectionUrl"
-        :class="`button${!settings.primaryButton ? ' secondary' : ''} mobile-featured-collection-link`"
-      >
-        {{ settings.shopLinkText }}
-      </a>
     </div>
   </div>
 </template>
@@ -170,71 +145,41 @@
   import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
   import { Swiper } from 'swiper'
   import { Navigation, Pagination } from 'swiper/modules'
-  import type { Product, ProductSliderSettings } from '../types/product'
 
   // Import Swiper styles
   import 'swiper/css'
   import 'swiper/css/navigation'
   import 'swiper/css/pagination'
 
-  interface Props {
-    products: Product[]
-    settings: ProductSliderSettings
-    collectionUrl?: string
+  interface ImageSliderImage {
+    src: string
+    alt: string
+    aspectRatio?: number
+    subtext?: string
+    addBoxShadow?: boolean
   }
 
-  const props = withDefaults(defineProps<Props>(), {
-    collectionUrl: '#',
-  })
+  interface ImageSliderSettings {
+    backgroundColor?: string
+    addBoxShadow: boolean
+    title?: string
+    noTopPadding: boolean
+    noBottomPadding: boolean
+  }
+
+  interface Props {
+    images: ImageSliderImage[]
+    settings: ImageSliderSettings
+  }
+
+  const props = defineProps<Props>()
 
   // Generate unique IDs for this component instance
   const componentId = ref(`${Date.now()}-${Math.random().toString(36).substr(2, 9)}`)
-  const swiperId = computed(() => `featured-collection-${componentId.value}`)
-
-  // Placeholder image
-  const placeholderImage = '/placeholder-image.png'
+  const swiperId = computed(() => `image-carousel-${componentId.value}`)
 
   // Swiper instance
   let swiperInstance: Swiper | null = null
-
-  // Computed properties
-  const displayProducts = computed(() => {
-    return props.products.slice(0, props.settings.productLimit)
-  })
-
-  // Format price helper
-  const formatPrice = (price: number): string => {
-    return price.toFixed(2)
-  }
-
-  // Height management functions (from original code)
-  const addMinHeights = (elements: NodeListOf<Element>) => {
-    const elementHeights = Array.from(elements).map(el => el.clientHeight)
-    const maxHeight = Math.max(...elementHeights)
-
-    elements.forEach(el => {
-      ;(el as HTMLElement).style.height = maxHeight + 'px'
-    })
-  }
-
-  const removeMinHeights = (elements: NodeListOf<Element>) => {
-    elements.forEach(el => {
-      ;(el as HTMLElement).style.height = ''
-    })
-  }
-
-  const resizeEventHandler = () => {
-    const swiperEl = document.getElementById(swiperId.value)
-    if (!swiperEl) return
-
-    const imageWrappers = swiperEl.querySelectorAll('.siema-product .product-image-wrapper')
-    const productInfos = swiperEl.querySelectorAll('.siema-product .product-info')
-
-    removeMinHeights(imageWrappers)
-    removeMinHeights(productInfos)
-    addMinHeights(imageWrappers)
-    addMinHeights(productInfos)
-  }
 
   // Initialize Swiper
   const initSwiper = async () => {
@@ -243,41 +188,11 @@
     const swiperEl = document.getElementById(swiperId.value)
     if (!swiperEl) return
 
-    const breakpoints: { [width: number]: any } = props.settings.addBoxShadow
-      ? {
-          550: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          768: {
-            slidesPerView: 3,
-            spaceBetween: 20,
-          },
-          1024: {
-            slidesPerView: 4,
-            spaceBetween: 20,
-          },
-          1440: {
-            slidesPerView: 4,
-            spaceBetween: 40,
-          },
-        }
-      : {
-          550: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-          },
-        }
-
     swiperInstance = new Swiper(`#${swiperId.value}`, {
       modules: [Navigation, Pagination],
       slidesPerView: 1,
-      autoHeight: false,
-      spaceBetween: 15,
+      autoHeight: true,
+      spaceBetween: 20,
 
       navigation: {
         nextEl: `.js-sw-n-${componentId.value}`,
@@ -285,16 +200,10 @@
       },
 
       pagination: {
-        el: `.js-pg-${componentId.value}`,
+        el: `.js-pg-n-${componentId.value}`,
         clickable: true,
       },
-
-      breakpoints,
     })
-
-    // Setup resize handling
-    window.addEventListener('resize', resizeEventHandler)
-    resizeEventHandler() // Initial call
   }
 
   // Lifecycle
@@ -306,11 +215,20 @@
     if (swiperInstance) {
       swiperInstance.destroy(true, true)
     }
-    window.removeEventListener('resize', resizeEventHandler)
   })
 </script>
 
-<style lang="scss">
-  // The styles are already included in the existing _swiper-sliders.scss file
-  // so we don't need to duplicate them here
+<style lang="scss" scoped>
+  .no-top-padding {
+    padding-top: 0 !important;
+  }
+
+  .no-bottom-padding {
+    padding-bottom: 0 !important;
+  }
+
+  .full-width {
+    width: 100%;
+    height: auto;
+  }
 </style>
