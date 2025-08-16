@@ -1,15 +1,16 @@
 ---
-import BaseLayoutComponent from '@/components/BaseLayout.vue';
+import BaseLayoutComponent from '@/components/BaseLayout.vue'
 
 export interface Props {
-  title?: string;
-  description?: string;
+  title?: string
+  description?: string
 }
 
-const { title = "Westside Pages", description = "The world's strongest training facility" } = Astro.props;
+const { title = 'Westside Pages', description = "The world's strongest training facility" } =
+  Astro.props
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -19,11 +20,7 @@ const { title = "Westside Pages", description = "The world's strongest training 
     <title>{title}</title>
   </head>
   <body>
-    <BaseLayoutComponent 
-      client:load 
-      title={title} 
-      description={description}
-    >
+    <BaseLayoutComponent client:load title={title} description={description}>
       <slot />
     </BaseLayoutComponent>
   </body>

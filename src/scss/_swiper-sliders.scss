@@ -11,7 +11,8 @@
     padding: 0 1em;
   }
 
-  .swiper-button-next, .swiper-button-prev {
+  .swiper-button-next,
+  .swiper-button-prev {
     width: 47px;
     height: 47px;
 
@@ -71,7 +72,7 @@
     font-size: 16px;
     line-height: 18px;
     letter-spacing: 0.5px;
-    color: #0169BF !important;
+    color: #0169bf !important;
   }
 
   .product-info .price-wrapper {
@@ -118,7 +119,8 @@
     padding: 0 1.5em;
   }
 
-  .swiper-button-next, .swiper-button-prev {
+  .swiper-button-next,
+  .swiper-button-prev {
     width: 47px;
     height: 47px;
 
@@ -146,7 +148,7 @@
   }
 
   .price.m-n {
-    color: #BF0101 !important;
+    color: #bf0101 !important;
 
     span {
       color: #b4b4b4 !important;
@@ -183,13 +185,20 @@
   }
 }
 
-.product-list-wrapper .product .product-info .original-price, .product-list-wrapper .product .product-info .price {
-  font-family: Knockout Sumo,Helvetica,sans-serif;
+.product-list-wrapper .product .product-info .original-price,
+.product-list-wrapper .product .product-info .price {
+  font-family:
+    Knockout Sumo,
+    Helvetica,
+    sans-serif;
 }
 
 .price.m-n span {
-  color: #b4b4b4!important;
-  font-family: Knockout Sumo,Helvetica,sans-serif;
+  color: #b4b4b4 !important;
+  font-family:
+    Knockout Sumo,
+    Helvetica,
+    sans-serif;
 }
 
 .m-sw-pg {

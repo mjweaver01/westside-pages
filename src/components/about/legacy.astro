@@ -1,35 +1,43 @@
-  <section id="hero-section" class="hero-section">
-    <img id="hero-image-desktop" class="hero-image desktop" 
-         alt="Westside Barbell Hero" 
-         src="//www.westside-barbell.com/cdn/shop/files/Hero_BG-squat_1_1_1_1600x.png?v=1613747737" 
-         srcset="//www.westside-barbell.com/cdn/shop/files/Hero_BG-squat_1_1_1_360x.png?v=1613747737 360w, 
+<section id="hero-section" class="hero-section">
+  <img
+    id="hero-image-desktop"
+    class="hero-image desktop"
+    alt="Westside Barbell Hero"
+    src="//www.westside-barbell.com/cdn/shop/files/Hero_BG-squat_1_1_1_1600x.png?v=1613747737"
+    srcset="//www.westside-barbell.com/cdn/shop/files/Hero_BG-squat_1_1_1_360x.png?v=1613747737 360w, 
                  //www.westside-barbell.com/cdn/shop/files/Hero_BG-squat_1_1_1_540x.png?v=1613747737 540w, 
                  //www.westside-barbell.com/cdn/shop/files/Hero_BG-squat_1_1_1_720x.png?v=1613747737 720w, 
                  //www.westside-barbell.com/cdn/shop/files/Hero_BG-squat_1_1_1_900x.png?v=1613747737 900w, 
                  //www.westside-barbell.com/cdn/shop/files/Hero_BG-squat_1_1_1_1080x.png?v=1613747737 1080w, 
                  //www.westside-barbell.com/cdn/shop/files/Hero_BG-squat_1_1_1_1600x.png?v=1613747737 1600w"
-         sizes="100vw" />
-    
-    <img id="hero-image-mobile" class="hero-image mobile"
-         alt="Westside Barbell Hero" 
-         src="//www.westside-barbell.com/cdn/shop/files/Hero_BG-squat_1_1_1_800x.png?v=1613747737" />
+    sizes="100vw"
+  />
 
-    <div class="container">
-      <div id="hero-text">
-        <h1 class="hero-text" id="hero-preheader">A LEGACY OF</h1>
-        
-        <h1 class="hero hero-text hero-header" id="hero-header-desktop">KNOWLEDGE<br/>&amp; POWER</h1>
-        <h1 class="hero hero-text hero-header" id="hero-header-mobile">KNOWLEDGE<br/>&amp; POWER</h1>
-        
-        <h4 class="hero-text" id="hero-subheader">the culture of westside barbell</h4>
-      </div>
+  <img
+    id="hero-image-mobile"
+    class="hero-image mobile"
+    alt="Westside Barbell Hero"
+    src="//www.westside-barbell.com/cdn/shop/files/Hero_BG-squat_1_1_1_800x.png?v=1613747737"
+  />
+
+  <div class="container">
+    <div id="hero-text">
+      <h1 class="hero-text" id="hero-preheader">A LEGACY OF</h1>
+
+      <h1 class="hero hero-text hero-header" id="hero-header-desktop">
+        KNOWLEDGE<br />&amp; POWER
+      </h1>
+      <h1 class="hero hero-text hero-header" id="hero-header-mobile">KNOWLEDGE<br />&amp; POWER</h1>
+
+      <h4 class="hero-text" id="hero-subheader">the culture of westside barbell</h4>
     </div>
-  </section>
+  </div>
+</section>
 
-  <style lang="scss"> 
-    @use '@/scss/variables.scss' as *;
+<style lang="scss">
+  @use '@/scss/variables.scss' as *;
 
-    section.hero-section {
+  section.hero-section {
     position: relative;
     height: 100vh;
     height: 74vw;
@@ -44,7 +52,7 @@
     height: calc(100% + 5px);
     object-fit: cover;
     object-position: top;
-    
+
     &.mobile {
       display: none;
     }
@@ -97,9 +105,8 @@
     color: #2a95fa;
   }
 
-
   // Responsive Styles
-  @media(max-width: $desktop) {
+  @media (max-width: $desktop) {
     #hero-preheader {
       font-size: 16px;
     }
@@ -114,7 +121,7 @@
     }
   }
 
-  @media(max-width: $tablet) {
+  @media (max-width: $tablet) {
     .hero-image.desktop {
       display: none;
     }
