@@ -1,6 +1,5 @@
 ---
-import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.astro';
+import BaseLayoutComponent from '@/components/BaseLayout.vue';
 
 export interface Props {
   title?: string;
@@ -20,29 +19,17 @@ const { title = "Westside Pages", description = "The world's strongest training 
     <title>{title}</title>
   </head>
   <body>
-    <div id="app">
-      <Header client:load />
-      <main>
-        <slot />
-      </main>
-      <Footer />
-    </div>
+    <BaseLayoutComponent 
+      client:load 
+      title={title} 
+      description={description}
+    >
+      <slot />
+    </BaseLayoutComponent>
   </body>
 </html>
 
 <style lang="scss" is:global>
   @use '../scss/global.scss';
   @use '../scss/cms.scss';
-</style>
-
-<style lang="scss">
-  #app {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-
-    main {
-      flex: 1;
-    }
-  }
 </style>

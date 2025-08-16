@@ -1,0 +1,174 @@
+<div class="max-width email-signup section-email-signup">
+  <div class="email-signup__title-icon">
+    <svg class="icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M40 25.9375C40 26.8005 39.3005 27.5 38.4375 27.5C37.5745 27.5 36.875 26.8005 36.875 25.9375V17.081L23.3005 25.5219C22.2824 26.1548 21.1411 26.4713 20 26.4713C18.8586 26.4713 17.7176 26.1548 16.6998 25.5219L3.125 17.081V33.75C3.125 35.473 4.52698 36.875 6.25 36.875H33.75C35.473 36.875 36.875 35.473 36.875 33.75C36.875 32.887 37.5745 32.1875 38.4375 32.1875C39.3005 32.1875 40 32.887 40 33.75C40 37.1964 37.1964 40 33.75 40H6.25C2.80365 40 0 37.1964 0 33.75V15.0461C0 12.9034 1.07758 10.9354 2.88239 9.78088L6.64062 7.37671V1.5625C6.64062 0.699463 7.34009 0 8.20312 0H31.7969C32.6599 0 33.3594 0.699463 33.3594 1.5625V7.38342L37.1204 9.79156C38.9236 10.9464 40 12.9141 40 15.0549V25.9375ZM4.56604 12.4136C4.09149 12.717 3.71887 13.1339 3.47076 13.616L6.64062 15.5872V11.0864L4.56604 12.4136ZM21.6501 22.868C20.6323 23.501 19.3674 23.501 18.3499 22.868L9.76562 17.5302V3.125H30.2344V17.5302L21.6501 22.868ZM35.4352 12.4234L33.3594 11.0941V15.5872L36.5256 13.6182C36.2778 13.1393 35.907 12.7255 35.4352 12.4234ZM27.1094 8.59375C27.1094 9.45679 26.4099 10.1562 25.5469 10.1562H14.4531C13.5901 10.1562 12.8906 9.45679 12.8906 8.59375C12.8906 7.73071 13.5901 7.03125 14.4531 7.03125H25.5469C26.4099 7.03125 27.1094 7.73071 27.1094 8.59375ZM22.4219 16.4062C23.2849 16.4062 23.9844 15.7068 23.9844 14.8438C23.9844 13.9807 23.2849 13.2812 22.4219 13.2812H14.4531C13.5901 13.2812 12.8906 13.9807 12.8906 14.8438C12.8906 15.7068 13.5901 16.4062 14.4531 16.4062H22.4219Z" fill="#306CF4"></path>
+    </svg>
+  </div>
+
+  <div class="info-titles titles-section">
+    <div class="info-title info-title--lg">  
+      Stay up to date!
+    </div>
+
+    <div class="info-title">
+      Join our Community<span> - Sign up today!</span>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .section-email-signup {
+    margin-top: 18px;
+    margin-bottom: 20px;
+  }
+
+  .email-signup {
+    background: #fff !important;
+    padding: 4em 0 !important;
+  }
+
+  .email-signup__title-icon {
+    margin: 0 auto;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    max-width: 40px;
+    max-height: 40px;
+  }
+
+  .email-signup__title-icon .icon {
+    width :100%;
+    height: auto;
+  }
+
+  .section-email-signup .info-title  {
+    color: #306cf4 !important;
+  }
+
+  .section-email-signup .info-title.info-title--lg+* {
+    margin-top: 11px;
+  }
+
+  .section-email-signup  .info-title.info-title--lg  {
+    color: #212121 !important;
+    text-transform: uppercase;
+  }
+
+  .section-email-signup  .info-title span {
+    color: #212121;
+    font-family: inherit;
+    background: none
+  }
+
+  .section-email-signup .klaviyo-wrapper form {
+    padding-top: 26px !important;
+  }
+
+  .section-email-signup .klaviyo-form {
+    max-width: unset !important;
+  }
+
+  .section-email-signup .klaviyo-form  [data-testid="form-row"] {
+    flex-direction: column !important;
+    display: block!important;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .section-email-signup .klaviyo-form  [data-testid="form-row"] > div {
+    margin-bottom: 20px !important;
+    padding: 0 !important;
+  }
+
+  .section-email-signup .klaviyo-form  [data-testid="form-row"] input {
+    background: #F3F5FB!important;
+    border: 1px solid #E5E9F2!important;
+    border-radius: 8px!important;
+    min-height: 50px;
+    padding-left: 22px !important;
+    font-size: 16px !important;
+  }
+
+  .section-email-signup .klaviyo-form  [data-testid="form-row"] input::placeholder {
+    font-size: 16px !important;
+  }
+
+  .section-email-signup .klaviyo-form  [data-testid="form-row"] input:hover {
+    border-color: #acafb5 !important;
+  }
+
+  .section-email-signup .klaviyo-form  [data-testid="form-row"] button {
+    background: #306CF4!important;
+    border-radius: 8px!important;
+    min-height: 50px;
+    box-sizing: border-box;
+    min-width: 150px;
+    font-family: Knockout HTF31 JuniorMiddle,Helvetica,sans-serif !important;
+    text-transform: capitalize;
+    font-weight: 500 !important;
+    font-size: 20px !important;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-email-signup .titles-section {
+      padding-bottom: 24px;
+    }
+  }
+
+  @media screen and (min-width: 1025px) {
+    .section-email-signup {
+      margin-top: 58px;
+      margin-bottom: 50px;
+    }
+
+    .email-signup__title-icon {
+      margin: 0 auto 38px;
+      max-width: 120px;
+      max-height: 60px;
+    }
+
+    .section-email-signup .info-title.info-title--lg+* {
+      margin-top: 13px;
+    }
+
+    .section-email-signup .klaviyo-wrapper form {
+      max-width: 1120px!important;
+      transform: translate(36px, 0px);
+    }
+
+    .section-email-signup .klaviyo-form > div {
+      width: 100%;
+      flex-direction: row !important;
+      gap: 30px;
+    }
+
+    .section-email-signup .klaviyo-form [data-testid="form-row"] {
+      flex-direction: row !important;
+      display: flex!important;
+      width: auto;
+      max-width: unset;
+      gap: 30px;
+      flex-grow: 1;
+    }
+
+    .section-email-signup .klaviyo-form [data-testid="form-row"] > div {
+      flex: 0 0 24%;
+    }
+
+    .section-email-signup .klaviyo-form  [data-testid="form-row"] input::placeholder,
+    .section-email-signup .klaviyo-form  [data-testid="form-row"] input {
+      font-size: 17px !important;
+    }
+
+    .section-email-signup .klaviyo-form [data-testid="form-row"] button {
+      max-width: 150px;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    .section-email-signup {
+      margin-top: 58px;
+      margin-bottom: 110px;
+    }
+  }
+</style>

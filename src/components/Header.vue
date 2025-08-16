@@ -9,11 +9,8 @@
         </div>
 
         <ul class="nav-links">
-          <li>
-            <a href="/" class="nav-link">Home</a>
-          </li>
-          <li>
-            <a href="/about" class="nav-link">About</a>
+          <li v-for="link in links" :key="link.text">
+            <a :href="link.url" class="nav-link">{{ link.text }}</a>
           </li>
         </ul>
 
@@ -33,6 +30,7 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import HamburgerMenu from './HamburgerMenu.vue'
+  import { links } from '@/links.ts'
 
   const isMenuOpen = ref(false)
 

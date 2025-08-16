@@ -13,8 +13,9 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "astro": "^4.15.0",
     "@astrojs/vue": "^4.5.0",
+    "astro": "^4.15.0",
+    "iframe-resizer": "^5.5.2",
     "vue": "^3.4.0"
   },
   "devDependencies": {
