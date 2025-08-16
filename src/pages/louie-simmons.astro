@@ -1,0 +1,20 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import LouieHeader from '@/components/louie/LouieHeader.astro'
+import LouieHotlinks from '@/components/louie/LouieHotlinks.astro'
+import LouiesBackground from '@/components/louie/LouiesBackground.astro'
+import CareerEarlyLife from '@/components/louie/CareerEarlyLife.astro'
+---
+
+<BaseLayout
+  title="About - Westside Barbell"
+  description="Learn about Westside Barbell's legacy of knowledge and power"
+  invertHeader={true}
+>
+  <div class="page about">
+    <LouieHeader />
+    <LouieHotlinks />
+    <LouiesBackground />
+    <CareerEarlyLife />
+  </div>
+</BaseLayout>

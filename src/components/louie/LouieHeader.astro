@@ -1,0 +1,229 @@
+<section class="shopify-section index-hero index-hero--new">
+  <section class="hero-section" style="background-color: rgba(0,0,0,0)">
+    <img
+      srcset="
+        //www.westside-barbell.com/cdn/shop/files/Louie_Simmons_Squat_Hero.jpg?v=1695831552&width=375 375w,
+        //www.westside-barbell.com/cdn/shop/files/Louie_Simmons_Squat_Hero.jpg?v=1695831552&width=750 750w,
+        //www.westside-barbell.com/cdn/shop/files/Louie_Simmons_Squat_Hero.jpg?v=1695831552&width=1100 1100w,
+        //www.westside-barbell.com/cdn/shop/files/Louie_Simmons_Squat_Hero.jpg?v=1695831552&width=1500 1500w,
+        //www.westside-barbell.com/cdn/shop/files/Louie_Simmons_Squat_Hero.jpg?v=1695831552&width=1780 1780w,
+        //www.westside-barbell.com/cdn/shop/files/Louie_Simmons_Squat_Hero.jpg?v=1695831552&width=2000 2000w,
+        //www.westside-barbell.com/cdn/shop/files/Louie_Simmons_Squat_Hero.jpg?v=1695831552 2000w"
+      sizes="100vw"
+      src="//www.westside-barbell.com/cdn/shop/files/Louie_Simmons_Squat_Hero.jpg?v=1695831552&width=1500"
+      loading="lazy"
+      alt="Louie Simmons"
+      width="2000"
+      height="1332.9999999999998"
+      class="hero-section__image hero-section__image--mobile"
+    />
+    <img
+      srcset="
+        //www.westside-barbell.com/cdn/shop/files/Louie_Simmons_Squat_Hero.jpg?v=1695831552&width=375 375w,
+        //www.westside-barbell.com/cdn/shop/files/Louie_Simmons_Squat_Hero.jpg?v=1695831552&width=750 750w,
+        //www.westside-barbell.com/cdn/shop/files/Louie_Simmons_Squat_Hero.jpg?v=1695831552&width=1100 1100w,
+        //www.westside-barbell.com/cdn/shop/files/Louie_Simmons_Squat_Hero.jpg?v=1695831552&width=1500 1500w,
+        //www.westside-barbell.com/cdn/shop/files/Louie_Simmons_Squat_Hero.jpg?v=1695831552&width=1780 1780w,
+        //www.westside-barbell.com/cdn/shop/files/Louie_Simmons_Squat_Hero.jpg?v=1695831552&width=2000 2000w,
+        //www.westside-barbell.com/cdn/shop/files/Louie_Simmons_Squat_Hero.jpg?v=1695831552 2000w"
+      sizes="100vw"
+      src="//www.westside-barbell.com/cdn/shop/files/Louie_Simmons_Squat_Hero.jpg?v=1695831552&width=1500"
+      loading="lazy"
+      alt="Louie Simmons"
+      width="2000"
+      height="1332.9999999999998"
+      class="hero-section__image hero-section__image--desktop"
+    />
+
+    <div class="hero-section__container">
+      <div class="hero-section__content">
+        <h1
+          class="hero-section__title hero-section__title--lg"
+          style="color: #ffffff; --section-hero-title-size: 60px;"
+        >
+          Louie Simmons
+        </h1>
+
+        <h4 class="hero-section__title hero-section__title--md" style="color: #ffffff">
+          Westside Barbell Founder
+        </h4>
+
+        <div class="block-text hero-section__text hero-section__text--lg" style="color: #ffffff">
+          <p>
+            Louie Simmons was an influential figure in strength and conditioning, renowned for his
+            inventive training methodologies and decades-long career in powerlifting. Born in 1947,
+            he was best known as the founder of Westside Barbell, an exclusive, invitation-only
+            training facility in Columbus, Ohio.
+          </p>
+
+          <p>
+            Westside Barbell garnered a reputation as the "Mecca of Powerlifting," boasting several
+            world record holders among its members.
+          </p>
+          <ul>
+            <li style="color:white">
+              He competed in powerlifting for over three decades, achieving 'Elite' status in five
+              weight classes.
+            </li>
+            <li style="color:white">
+              Louie developed the
+              <a href="https://www.westside-barbell.com/pages/conjugate-method" style="color:white"
+                >Conjugate System</a
+              >, a revolutionary training methodology.
+            </li>
+            <li style="color:white">
+              His focus on injury prevention led to the invention of strength training equipment,
+              notably the Reverse Hyper machine.
+            </li>
+            <li style="color:white">
+              Sports teams, military and law enforcement, and athletes worldwide adopted his
+              training principles.
+            </li>
+          </ul>
+        </div>
+
+        <div class="hero-section__buttons">
+          <a
+            href="https://www.westside-barbell.com/blogs/the-blog/tagged/louie-simmons"
+            class="button primary"
+          >
+            Read Louie Simmons Articles
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<style lang="scss">
+  @use '@/scss/variables.scss' as *;
+
+  .index-hero .hero-section {
+    padding: 8em 0;
+  }
+
+  // Hero section styles to match the existing design
+  .hero-section {
+    position: relative;
+    overflow: hidden;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+
+    @media (min-width: $tablet) {
+      min-height: 600px;
+    }
+
+    @media (min-width: $desktop) {
+      min-height: 700px;
+    }
+  }
+
+  .hero-section__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+
+    &--mobile {
+      display: block;
+
+      @media (min-width: $tablet) {
+        display: none;
+      }
+    }
+
+    &--desktop {
+      display: none;
+
+      @media (min-width: $tablet) {
+        display: block;
+      }
+    }
+  }
+
+  .hero-section__container {
+    position: relative;
+    width: 100%;
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    z-index: 1;
+  }
+
+  .hero-section__content {
+    max-width: 600px;
+  }
+
+  .hero-section__title {
+    margin-bottom: 1rem;
+
+    &--lg {
+      font-size: 2.5rem;
+      font-weight: 900;
+      line-height: 1.1;
+
+      @media (min-width: $tablet) {
+        font-size: 3.5rem;
+      }
+
+      @media (min-width: $desktop) {
+        font-size: 4rem;
+      }
+    }
+
+    &--md {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+
+      @media (min-width: $tablet) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .hero-section__text {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+
+      li {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    a {
+      text-decoration: underline;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    &--lg {
+      font-size: 1rem;
+
+      @media (min-width: $tablet) {
+        font-size: 1.125rem;
+      }
+    }
+  }
+
+  .hero-section__buttons {
+    .button {
+      background: $primary-color;
+      border-color: $primary-color;
+    }
+  }
+</style>
