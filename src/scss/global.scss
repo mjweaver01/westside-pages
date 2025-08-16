@@ -207,7 +207,7 @@ body {
   left: 0.5em;
   width: 35px;
   height: 35px;
-  background: url('~/assets/featured-arrow.svg') no-repeat;
+  background: url('../assets/featured-arrow.svg') no-repeat;
   background-position: center;
   background-size: cover;
   cursor: pointer;
@@ -626,12 +626,12 @@ $desktop-top: 85px;
     padding: 0;
     width: 1.25em;
     height: 1.25em;
-    background: url('~/assets/search.svg') no-repeat !important;
+    background: url('../assets/search.svg') no-repeat !important;
     background-size: cover !important;
     transition: all 0.25s;
 
     &:hover {
-      background: url('~/assets/search.svg') no-repeat !important;
+      background: url('../assets/search.svg') no-repeat !important;
       background-size: cover !important;
     }
   }

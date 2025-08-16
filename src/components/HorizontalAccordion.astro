@@ -32,7 +32,7 @@ function processHeading(heading: string): string {
 }
 
 // Generate unique component ID for scoped JavaScript
-const componentId = `horizontal-accordion-${Math.random().toString(36).substr(2, 9)}`
+const componentId = `horizontal-accordion-${Math.random().toString(36).substring(2, 11)}`
 ---
 
 <section class="section-accordion-h" id={componentId}>
@@ -179,7 +179,7 @@ const componentId = `horizontal-accordion-${Math.random().toString(36).substr(2,
   </div>
 </section>
 
-<script define:vars={{ componentId }}>
+<script define:vars={{ componentId }} is:inline>
   // Wait for DOM to be ready
   document.addEventListener('DOMContentLoaded', function () {
     const section = document.querySelector(`#${componentId}`)
@@ -189,7 +189,7 @@ const componentId = `horizontal-accordion-${Math.random().toString(36).substr(2,
     const accordionBtns = section.querySelectorAll('[data-accordion-horizontal]')
 
     accordionBtns.forEach(accordion => {
-      accordion.onclick = function (e) {
+      accordion.onclick = function () {
         accordionBtns.forEach(btn => {
           btn.parentElement.classList.remove('is-open')
         })

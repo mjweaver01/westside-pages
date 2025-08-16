@@ -176,7 +176,7 @@ input {
 
 //select
 select {
-  background: url('~/assets/select-arrow.svg') no-repeat;
+  background: url('../assets/select-arrow.svg') no-repeat;
   background-position: calc(100% - 1.25em) 50%;
   background-size: 10px;
   padding-right: 2.5em;
@@ -462,7 +462,7 @@ button,
     top: 50%;
     right: 0;
     height: 9px;
-    background: url('~/assets/select-arrow.svg') no-repeat;
+    background: url('../assets/select-arrow.svg') no-repeat;
     background-position: calc(100% - 1.25em) 50%;
     background-size: 10px;
     margin: -0.5em 0;
