@@ -11,14 +11,6 @@
       class="max-width max-width--paddings"
       :style="maxWidth > 0 ? `max-width: ${maxWidth}px;` : ''"
     >
-      <img
-        v-if="containerImage"
-        :src="containerImage.url"
-        loading="lazy"
-        :alt="containerImage.alt || ''"
-        class="section__container-image"
-      />
-
       <div v-if="titles" class="info-titles accordion-tab__titles">
         <h4 v-if="titles.title" class="info-title info-title--lg" v-html="titles.title" />
         <div v-if="titles.text" class="info-text" v-html="titles.text" />
@@ -132,34 +124,6 @@
   </section>
 </template>
 
-<!-- 
-  HorizontalTabs.vue - A Vue component that replicates Shopify Liquid horizontal tabs functionality
-  
-  Usage example:
-  <HorizontalTabs
-    client:load
-    sectionId="my-tabs"
-    :maxWidth="1360"
-    :titles="{
-      title: 'Section Title',
-      text: '<p>Section description text</p>'
-    }"
-    :containerImage="{
-      url: '/path/to/image.jpg',
-      alt: 'Image description',
-      width: 1200,
-      aspectRatio: 1.5
-    }"
-    :items="[
-      {
-        heading: 'Tab 1',
-        text: '<p>Content for tab 1</p>',
-        button1: { label: 'Button 1', link: '/link1', style: 'primary' }
-      }
-    ]"
-  />
--->
-
 <script setup lang="ts">
   import { ref } from 'vue'
 
@@ -181,18 +145,10 @@
     text?: string
   }
 
-  interface ContainerImage {
-    url: string
-    alt?: string
-    width: number
-    aspectRatio: number
-  }
-
   interface Props {
     sectionId?: string
     maxWidth?: number
     titles?: TitlesBlock
-    containerImage?: ContainerImage
     items: TabItem[]
   }
 
@@ -200,22 +156,9 @@
     maxWidth: 1360,
   })
 
-  // Generate unique component ID for scoped functionality
-  const componentId = ref(`horizontal-tabs-${Math.random().toString(36).substr(2, 9)}`)
+  const componentId = ref(`horizontal-tabs-${Math.random().toString(36).substring(2, 11)}`)
 
-  // Reactive state for active tab
-  const activeTab = ref(2) // Third tab (Elite Bench Press Athletes) is active by default
-
-  // Generate responsive srcset for images
-  const generateSrcset = (image: ContainerImage): string => {
-    const widths = [375, 750, 1100, 1500, 1780, 2000, 3000, 3840]
-    const srcsetParts = widths
-      .filter(width => image.width >= width)
-      .map(width => `${image.url}?width=${width} ${width}w`)
-
-    srcsetParts.push(`${image.url} ${image.width}w`)
-    return srcsetParts.join(', ')
-  }
+  const activeTab = ref(2)
 
   // Desktop tab selection
   const selectTab = (index: number) => {
