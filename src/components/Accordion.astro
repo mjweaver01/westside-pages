@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets'
+
 // Reusable Accordion component
 interface AccordionItem {
   type: 'accordion'
@@ -57,7 +59,7 @@ function processHeading(heading: string): string {
           >
             {block.icon && (
               <div class="block-title__icon">
-                <img src={block.icon} loading="lazy" alt="" />
+                <Image src={block.icon} alt="" width={100} height={100} />
               </div>
             )}
             <Fragment set:html={processHeading(block.heading)} />

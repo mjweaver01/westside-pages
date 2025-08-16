@@ -1,3 +1,7 @@
+---
+import { Image } from 'astro:assets'
+---
+
 <section class="two-column" style="background-color: #ffffff">
   <span
     id="WestsideBarbell"
@@ -5,12 +9,11 @@
     class="anchor"></span>
 
   <div class="max-width max-width--paddings two-column__content" style="max-width: 1360px;">
-    <img
+    <Image
       src="/pages/Logo_5.png"
-      loading="lazy"
       alt="Westside Barbell Logo"
-      width="1348"
-      height="337.0"
+      width={1348}
+      height={337}
       class="section__container-image"
     />
 

@@ -1,5 +1,5 @@
 ---
-// Hardcoded content based on the rendered markup
+import { Image } from 'astro:assets'
 ---
 
 <section class="section-book-info">
@@ -56,13 +56,12 @@
       <!-- Book Info Article Block -->
       <div class="book-info__article book-info__block">
         <div class="book-info__article-media">
-          <img
+          <Image
             class="book-info__article-media-image"
             src="/pages/ironsamuraiPAPERBACKPRODUCT_1600.jpg"
             alt="The Iron Samurai Book Cover"
-            loading="lazy"
-            width="1600"
-            height="1600"
+            width={1600}
+            height={1600}
           />
         </div>
 

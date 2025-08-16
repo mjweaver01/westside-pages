@@ -1,3 +1,7 @@
+---
+import { Image } from 'astro:assets'
+---
+
 <section class="shopify-section">
   <section class="image-info" style="background-color: ">
     <span
@@ -14,25 +18,21 @@
 
       <div class="image-info__grid">
         <div class="image-info__grid-item image-info__media">
-          <img
+          <Image
             class="mobile-image is-hidden-desktop-only"
             src="/pages/DSC1046_LouieSimmons_1200x1200_8.jpg"
-            sizes="100vw"
             alt="Louie Simmons"
-            loading="lazy"
-            width="1200"
-            height="1200"
+            width={1200}
+            height={1200}
             style="border-radius: 16px"
           />
 
-          <img
+          <Image
             class="is-hidden-mobile-only desktop-image"
             src="/pages/DSC1046_LouieSimmons_1200x1200_8.jpg"
-            sizes="100vw"
             alt="Louie Simmons"
-            loading="lazy"
-            width="1242"
-            height="2208"
+            width={1242}
+            height={2208}
             style="border-radius: 16px"
           />
         </div>

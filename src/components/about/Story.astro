@@ -1,12 +1,18 @@
+---
+import { Image } from 'astro:assets'
+---
+
 <section class="shopify-section the-story">
   <div class="the-story" style="background-color: #f0efee">
     <div class="story-inner max-width">
       <div class="story-of">
-        <img
+        <Image
           class="story-of-image"
           src="/pages/Group_175_1.png"
           alt="Record Board"
           style="width: 100%; height: 100%; object-fit: cover;"
+          width={1236}
+          height={36}
         />
 
         <div class="story-of-text center-text">
@@ -15,11 +21,13 @@
       </div>
 
       <div class="westside-header">
-        <img
+        <Image
           class="westside-header-image"
           src="/pages/Group_175.png"
           alt="Westside Banner"
           style="width: 100%; height: 100%; object-fit: cover;"
+          width={1300}
+          height={170}
         />
 
         <div class="westside-header-text center-text">
@@ -31,11 +39,13 @@
         <div class="info-right row">
           <div class="column-12-tablet-vert-6">
             <div class="person-image">
-              <img
+              <Image
                 class="person-image-img"
                 src="/pages/Rectangle_105.png"
                 alt="Louie Simmons"
-                style="width: 100%;"
+                style="width: 100%; height: auto;"
+                width={583}
+                height={1080}
               />
             </div>
           </div>
@@ -63,11 +73,13 @@
         <div class="info-left row row-reverse">
           <div class="column-12-tablet-vert-6">
             <div class="person-image">
-              <img
+              <Image
                 class="person-image-img"
                 src="/pages/Rectangle_106.png"
                 alt="Training Methods"
-                style="width: 100%; margin-bottom: -1em;"
+                style="width: 100%; height: auto; margin-bottom: -1em;"
+                width={583}
+                height={1080}
               />
             </div>
           </div>

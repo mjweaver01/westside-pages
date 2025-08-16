@@ -1,3 +1,7 @@
+---
+import { Image } from 'astro:assets'
+---
+
 <section id="html-grid-custom-html-grid" class="custom-html-grid">
   <div class="row tablet-constrain-items">
     <div class="block column-12">
@@ -5,7 +9,12 @@
         <div class="row-no-bottom custom-constrain-items center-text invert">
           <div class="column-12">
             <p>
-              <img src="/pages/Group_3.png" alt="Westside Barbell Logo" />
+              <Image
+                src="/pages/Group_3.png"
+                alt="Westside Barbell Logo"
+                width={204}
+                height={154}
+              />
             </p>
             <br />
             <p>
