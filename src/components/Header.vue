@@ -34,8 +34,8 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import HamburgerMenu from './HamburgerMenu.vue'
-  import { links } from '../utils/links'
-  import { detectIframeMode } from '../utils/iframe'
+  import { links } from '@/utils/links'
+  import { detectIframeMode } from '@/utils/iframe'
 
   interface Props {
     invertHeader?: boolean
