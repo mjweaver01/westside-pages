@@ -79,10 +79,11 @@ On the website where you want to embed the iframes:
 
 ```javascript
 document.addEventListener('DOMContentLoaded', function () {
-  iFrameResize(
+  iframeResize(
     {
       checkOrigin: false,
       heightCalculationMethod: 'max',
+      warningTimeout: 10000, // 10 seconds (default is 5)
       onInit: function (iframe) {
         console.log('Iframe initialized:', iframe.id)
       },
@@ -166,21 +167,58 @@ iframe {
 
 ### Common Issues:
 
-1. **Height not adjusting**: Check browser console for errors and ensure both scripts are loaded
-2. **Cross-origin errors**: Make sure `checkOrigin: false` is set
-3. **Content cut off**: Try different `heightCalculationMethod` values
-4. **Performance issues**: Consider lazy loading iframes that aren't immediately visible
+1. **"Deprecated Function" Warning**:
+   - **Issue**: Using `iFrameResize()` instead of `iframeResize()`
+   - **Fix**: Replace `iFrameResize(` with `iframeResize(` in your parent page JavaScript
+
+2. **"No response from iframe" Warning**:
+   - **Issue**: The child iframe hasn't loaded the content window script
+   - **Fix**: Ensure your pages include the iframe-resizer content window script
+   - **Note**: This is handled automatically by the Vue BaseLayout component
+
+3. **Height not adjusting**:
+   - Check browser console for errors and ensure both scripts are loaded
+   - Verify the content window script is loading in the iframe
+
+4. **Cross-origin errors**:
+   - Make sure `checkOrigin: false` is set in the parent configuration
+
+5. **Content cut off**:
+   - Try different `heightCalculationMethod` values
+   - Consider using `'max'` for most reliable results
+
+6. **Performance issues**:
+   - Consider lazy loading iframes that aren't immediately visible
+   - Use `warningTimeout: 0` to disable timeout warnings if everything works
 
 ### Debug Mode:
 
 Add `log: true` to the iframe-resizer options to see detailed logs:
 
 ```javascript
-iFrameResize(
+iframeResize(
   {
     log: true,
     checkOrigin: false,
     heightCalculationMethod: 'max',
+    warningTimeout: 10000, // Increase if needed
+  },
+  'iframe'
+)
+```
+
+### Warning Timeout Configuration:
+
+If you see "No response from iframe" warnings but everything works correctly:
+
+```javascript
+iframeResize(
+  {
+    checkOrigin: false,
+    heightCalculationMethod: 'max',
+    warningTimeout: 0, // Disable warnings completely
+    // OR
+    warningTimeout: 15000, // Increase to 15 seconds
   },
   'iframe'
 )

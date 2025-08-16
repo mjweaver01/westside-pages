@@ -1,10 +1,10 @@
 <template>
   <div id="app" :class="{ 'iframe-mode': isIframeMode }">
-    <Header v-if="!isIframeMode" />
+    <Header v-if="!isIframeMode" v-cloak />
     <main>
       <slot />
     </main>
-    <Footer v-if="!isIframeMode" />
+    <Footer v-if="!isIframeMode" v-cloak />
   </div>
 </template>
 
@@ -24,7 +24,7 @@
   })
 
   // Reactive iframe mode detection
-  const isIframeMode = ref(false)
+  const isIframeMode = ref(true)
 
   // Detect iframe mode
   const detectIframeMode = (): boolean => {
@@ -53,13 +53,28 @@
     }
   })
 
-  // Dynamically load iframe resizer
+  // Dynamically load iframe resizer child package
   const loadIframeResizer = async () => {
     try {
-      await import('iframe-resizer/js/iframeResizer.contentWindow.min.js')
-      console.log('🎯 Iframe resizer loaded for content window')
+      // Use the new @iframe-resizer/child package
+      await import('@iframe-resizer/child')
+      console.log('🎯 Iframe resizer child package loaded')
     } catch (error) {
-      console.warn('⚠️ Could not load iframe resizer:', error)
+      console.warn('⚠️ Could not load iframe resizer child package:', error)
+      // Fallback to CDN if import fails
+      try {
+        const script = document.createElement('script')
+        script.src = 'https://cdn.jsdelivr.net/npm/@iframe-resizer/child@5.5.2/index.umd.js'
+        script.onload = () => {
+          console.log('🎯 Iframe resizer child loaded from CDN')
+        }
+        script.onerror = () => {
+          console.warn('⚠️ Could not load iframe resizer child from CDN')
+        }
+        document.head.appendChild(script)
+      } catch (fallbackError) {
+        console.warn('⚠️ Fallback CDN load failed:', fallbackError)
+      }
     }
   }
 

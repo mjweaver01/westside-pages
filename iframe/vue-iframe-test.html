@@ -115,15 +115,15 @@
       <div class="test-grid">
         <div class="test-item">
           <div class="test-header normal">Normal Mode</div>
-          <div class="url-display">http://localhost:4321/</div>
-          <iframe src="http://localhost:4321/" title="Normal Mode - Vue Implementation"> </iframe>
+          <div class="url-display">http://localhost:3000/</div>
+          <iframe src="http://localhost:3000/" title="Normal Mode - Vue Implementation"> </iframe>
         </div>
 
         <div class="test-item">
           <div class="test-header iframe-mode">Iframe Mode</div>
-          <div class="url-display">http://localhost:4321/?iframe=true</div>
+          <div class="url-display">http://localhost:3000/?iframe=true</div>
           <iframe
-            src="http://localhost:4321/?iframe=true"
+            src="http://localhost:3000/?iframe=true"
             scrolling="no"
             data-iframe-resizer='{"checkOrigin": false, "heightCalculationMethod": "max"}'
             title="Iframe Mode"
@@ -159,7 +159,7 @@
       <div style="margin: 20px 0">
         <h4>Home Page</h4>
         <iframe
-          src="http://localhost:4321/?iframe=true"
+          src="http://localhost:3000/?iframe=true"
           scrolling="no"
           style="width: 100%; border: 1px solid #ddd; border-radius: 4px"
           data-iframe-resizer='{"checkOrigin": false}'
@@ -171,7 +171,7 @@
       <div style="margin: 20px 0">
         <h4>About Page</h4>
         <iframe
-          src="http://localhost:4321/about?iframe=true"
+          src="http://localhost:3000/about?iframe=true"
           scrolling="no"
           style="width: 100%; border: 1px solid #ddd; border-radius: 4px"
           data-iframe-resizer='{"checkOrigin": false}'
@@ -183,7 +183,7 @@
       <div style="margin: 20px 0">
         <h4>Staff Page</h4>
         <iframe
-          src="http://localhost:4321/staff?iframe=true"
+          src="http://localhost:3000/staff?iframe=true"
           scrolling="no"
           style="width: 100%; border: 1px solid #ddd; border-radius: 4px"
           data-iframe-resizer='{"checkOrigin": false}'
@@ -193,16 +193,17 @@
       </div>
     </div>
 
-    <!-- Load iframe-resizer parent -->
-    <script src="https://cdn.jsdelivr.net/npm/iframe-resizer@5.5.2/js/iframeResizer.min.js"></script>
+    <!-- Load iframe-resizer parent package -->
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/parent@5.5.2/index.umd.js"></script>
 
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        // Initialize iframe resizer
-        iFrameResize(
+        // Initialize iframe resizer with new parent package
+        window.iframeResize(
           {
             checkOrigin: false,
             heightCalculationMethod: 'max',
+            warningTimeout: 10000, // Increase timeout to 10 seconds
             onInit: function (iframe) {
               console.log('✅ iframe initialized:', iframe.title)
             },

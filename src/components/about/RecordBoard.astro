@@ -1,0 +1,88 @@
+<section class="shopify-section record-board">
+  <div class="record-board-wrapper">
+    <img
+      class="record-board-image"
+      src="//www.westside-barbell.com/cdn/shop/files/Rectangle_109_200x.png?v=1613765472"
+      alt="Record Board"
+      style="width: 100%; height: 100%; object-fit: cover;"
+      srcset="
+        //www.westside-barbell.com/cdn/shop/files/Rectangle_109_360x.png?v=1613765472 360w,
+        //www.westside-barbell.com/cdn/shop/files/Rectangle_109_540x.png?v=1613765472 540w,
+        //www.westside-barbell.com/cdn/shop/files/Rectangle_109_720x.png?v=1613765472 720w,
+        //www.westside-barbell.com/cdn/shop/files/Rectangle_109_900x.png?v=1613765472 900w,
+        //www.westside-barbell.com/cdn/shop/files/Rectangle_109_1080x.png?v=1613765472 1080w,
+        //www.westside-barbell.com/cdn/shop/files/Rectangle_109_1600x.png?v=1613765472 1600w"
+    />
+    <noscript>
+      <img
+        class="lazyloaded"
+        src="//www.westside-barbell.com/cdn/shop/files/Rectangle_109_800x.png?v=1613765472"
+        alt="Record Board"
+      />
+    </noscript>
+
+    <div class="max-width record-board-description">
+      <h1 class="hero">
+        The Westside<br />
+        record<br />
+        board
+      </h1>
+      <h3 class="light-blue">NUMBERS DONT LIE</h3>
+      <br />
+      <br />
+      <a href="/blogs/gym-lifts" class="secondary-featured">THE RECORDS</a>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '@/scss/variables.scss' as *;
+
+  // Use existing styles from cms.scss for the record-board section
+  .record-board-wrapper {
+    position: relative;
+    margin-bottom: -5px;
+    max-height: 500px;
+    max-height: 80vh;
+    overflow: hidden;
+
+    .hero {
+      max-width: 500px;
+    }
+  }
+
+  .record-board-description {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0 auto;
+    transform: translateX(-50%);
+
+    > * {
+      color: $white;
+    }
+  }
+
+  @media (max-width: calc($tablet - 1px)) {
+    .record-board-wrapper {
+      div {
+        position: relative;
+        padding: 1em;
+
+        &.record-board-description {
+          padding: 3em 1em;
+        }
+      }
+
+      img {
+        position: absolute;
+      }
+    }
+  }
+</style>
