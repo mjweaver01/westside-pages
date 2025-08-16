@@ -13,13 +13,9 @@
     >
       <img
         v-if="containerImage"
-        :srcset="generateSrcset(containerImage)"
-        sizes="100vw"
         :src="containerImage.url"
         loading="lazy"
         :alt="containerImage.alt || ''"
-        :width="containerImage.width"
-        :height="Math.round(containerImage.width / containerImage.aspectRatio)"
         class="section__container-image"
       />
 

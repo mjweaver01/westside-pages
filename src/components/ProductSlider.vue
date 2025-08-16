@@ -27,21 +27,9 @@
 
               <img
                 class="product-image lazyload blur-up"
-                :src="placeholderImage"
                 :alt="product.featuredImage.alt"
-                :data-src="product.featuredImage.src"
-                data-widths="[360, 540, 720, 900, 1080, 1600]"
-                :data-aspectratio="product.featuredImage.aspectRatio"
-                data-sizes="auto"
+                :src="product.featuredImage.src"
               />
-
-              <noscript>
-                <img
-                  class="lazyloaded"
-                  :src="product.featuredImage.src"
-                  :alt="product.featuredImage.alt"
-                />
-              </noscript>
             </a>
 
             <div class="product-info">

@@ -1,3 +1,7 @@
+---
+import { KLAVIYO_NEWSLETTER_ID } from '../utils/constants'
+---
+
 <div class="max-width email-signup section-email-signup">
   <div class="email-signup__title-icon">
     <svg class="icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -14,6 +18,10 @@
 
     <div class="info-title">
       Join our Community<span> - Sign up today!</span>
+    </div>
+
+    <div class="klaviyo-wrapper">
+      <div class={`klaviyo-form-${KLAVIYO_NEWSLETTER_ID}`}></div>
     </div>
   </div>
 </div>
@@ -62,58 +70,9 @@
     background: none;
   }
 
-  .section-email-signup .klaviyo-wrapper form {
+  .section-email-signup .klaviyo-wrapper {
     padding-top: 26px !important;
   }
-
-  .section-email-signup .klaviyo-form {
-    max-width: unset !important;
-  }
-
-  .section-email-signup .klaviyo-form [data-testid='form-row'] {
-    flex-direction: column !important;
-    display: block !important;
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .section-email-signup .klaviyo-form [data-testid='form-row'] > div {
-    margin-bottom: 20px !important;
-    padding: 0 !important;
-  }
-
-  .section-email-signup .klaviyo-form [data-testid='form-row'] input {
-    background: #f3f5fb !important;
-    border: 1px solid #e5e9f2 !important;
-    border-radius: 8px !important;
-    min-height: 50px;
-    padding-left: 22px !important;
-    font-size: 16px !important;
-  }
-
-  .section-email-signup .klaviyo-form [data-testid='form-row'] input::placeholder {
-    font-size: 16px !important;
-  }
-
-  .section-email-signup .klaviyo-form [data-testid='form-row'] input:hover {
-    border-color: #acafb5 !important;
-  }
-
-  .section-email-signup .klaviyo-form [data-testid='form-row'] button {
-    background: #306cf4 !important;
-    border-radius: 8px !important;
-    min-height: 50px;
-    box-sizing: border-box;
-    min-width: 150px;
-    font-family:
-      Knockout HTF31 JuniorMiddle,
-      Helvetica,
-      sans-serif !important;
-    text-transform: capitalize;
-    font-weight: 500 !important;
-    font-size: 20px !important;
-  }
-
   @media screen and (min-width: 750px) {
     .section-email-signup .titles-section {
       padding-bottom: 24px;
@@ -134,39 +93,6 @@
 
     .section-email-signup .info-title.info-title--lg + * {
       margin-top: 13px;
-    }
-
-    .section-email-signup .klaviyo-wrapper form {
-      max-width: 1120px !important;
-      transform: translate(36px, 0px);
-    }
-
-    .section-email-signup .klaviyo-form > div {
-      width: 100%;
-      flex-direction: row !important;
-      gap: 30px;
-    }
-
-    .section-email-signup .klaviyo-form [data-testid='form-row'] {
-      flex-direction: row !important;
-      display: flex !important;
-      width: auto;
-      max-width: unset;
-      gap: 30px;
-      flex-grow: 1;
-    }
-
-    .section-email-signup .klaviyo-form [data-testid='form-row'] > div {
-      flex: 0 0 24%;
-    }
-
-    .section-email-signup .klaviyo-form [data-testid='form-row'] input::placeholder,
-    .section-email-signup .klaviyo-form [data-testid='form-row'] input {
-      font-size: 17px !important;
-    }
-
-    .section-email-signup .klaviyo-form [data-testid='form-row'] button {
-      max-width: 150px;
     }
   }
 
