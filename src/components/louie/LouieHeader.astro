@@ -81,107 +81,105 @@
   @use '@/scss/variables.scss' as *;
 
   .index-hero .hero-section {
-    padding: 8em 0;
+    padding: 0;
   }
 
-  // Hero section styles to match the existing design
   .hero-section {
-    position: relative;
-    overflow: hidden;
-    min-height: 500px;
+    height: calc(100vh - 59px);
+    min-height: 60vw;
     display: flex;
     align-items: center;
+    padding: 40px 0;
+    position: relative;
 
-    @media (min-width: $tablet) {
-      min-height: 600px;
-    }
-
-    @media (min-width: $desktop) {
-      min-height: 700px;
+    &.hero-section--bottom-space {
+      height: calc(100vh - 119px);
     }
   }
 
   .hero-section__image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
     z-index: -1;
-
-    &--mobile {
-      display: block;
-
-      @media (min-width: $tablet) {
-        display: none;
-      }
-    }
 
     &--desktop {
       display: none;
+    }
 
-      @media (min-width: $tablet) {
-        display: block;
-      }
+    &--mobile {
+      display: block;
     }
   }
 
   .hero-section__container {
+    justify-content: flex-end;
+    align-items: flex-start;
     position: relative;
-    width: 100%;
-    max-width: $max-width;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   .hero-section__content {
-    max-width: 600px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 20px 40px 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 100%;
   }
 
   .hero-section__title {
-    margin-bottom: 1rem;
+    width: 100%;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 150%;
+    font-family:
+      Knockout Ult Sumo,
+      Helvetica,
+      sans-serif;
+    margin-bottom: 13px;
 
-    &--lg {
-      font-size: 2.5rem;
-      font-weight: 900;
-      line-height: 1.1;
-
-      @media (min-width: $tablet) {
-        font-size: 3.5rem;
-      }
-
-      @media (min-width: $desktop) {
-        font-size: 4rem;
-      }
-    }
-
-    &--md {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-
-      @media (min-width: $tablet) {
-        font-size: 1.5rem;
-      }
+    &.hero-section__title--lg {
+      font-size: 27px;
+      line-height: 1.2;
+      margin-bottom: 13px;
+      letter-spacing: 0.9px;
     }
   }
 
-  .hero-section__text {
-    margin-bottom: 2rem;
-    line-height: 1.6;
+  .hero-section__sub-title {
+    font-family:
+      Knockout Ult Sumo,
+      Helvetica,
+      sans-serif;
+  }
 
-    p {
-      margin-bottom: 1rem;
+  .hero-section__text {
+    width: 100%;
+    font-size: 12px;
+    line-height: 150%;
+    padding-right: 6px;
+    text-align: left;
+
+    p + p {
+      margin-top: 8px;
     }
 
     ul {
-      margin: 1rem 0;
-      padding-left: 1.5rem;
+      margin: 0;
+      padding-left: 1rem;
 
       li {
         margin-bottom: 0.5rem;
+        line-height: 1.25;
       }
     }
 
@@ -192,20 +190,149 @@
         opacity: 0.8;
       }
     }
+  }
 
-    &--lg {
-      font-size: 1rem;
+  .hero-section__buttons {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
 
-      @media (min-width: $tablet) {
-        font-size: 1.125rem;
+    .button {
+      width: auto;
+      max-width: unset;
+      padding: 5px 15px;
+      min-height: 40px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      margin-top: 0;
+      font-size: 14px;
+      letter-spacing: 0;
+      text-transform: none;
+      line-height: 1;
+      font-weight: 500;
+      font-family:
+        Knockout HTF31 JuniorMiddle,
+        Helvetica,
+        sans-serif;
+      transition:
+        background-color 0.25s ease-in,
+        border-color 0.25s ease-in;
+      background: $primary-color;
+      border-color: $primary-color;
+
+      &.secondary {
+        background: #306cf4;
       }
     }
   }
 
-  .hero-section__buttons {
-    .button {
-      background: $primary-color;
-      border-color: $primary-color;
+  @media screen and (min-width: 750px) {
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      max-height: calc(100vh - 57px);
+      overflow: hidden;
+    }
+
+    .hero-section__container {
+      justify-content: center;
+    }
+
+    .hero-section__content {
+      max-width: 660px;
+      text-align: left;
+      padding-left: 40px;
+    }
+
+    .hero-section__image--desktop {
+      display: block;
+    }
+
+    .hero-section__image--mobile {
+      display: none;
+    }
+
+    .hero-section__title {
+      font-size: 27px;
+
+      &.hero-section__title--lg {
+        font-size: 40px;
+      }
+    }
+
+    .hero-section__text {
+      font-size: 14px;
+    }
+  }
+
+  @media screen and (min-width: 1025px) {
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      max-height: calc(100vh - 85px);
+      overflow: hidden;
+      min-height: 40vw;
+
+      &.hero-section--bottom-space {
+        height: calc(100vh - 191px);
+      }
+    }
+
+    .hero-section__content {
+      padding-left: 80px;
+      max-width: 833px;
+    }
+
+    .hero-section__title {
+      margin-bottom: 26px;
+
+      &.hero-section__title--lg {
+        margin-bottom: 29px;
+      }
+    }
+
+    .hero-section__buttons {
+      margin-top: 30px;
+      gap: 30px;
+
+      .button {
+        padding: 5px 20px;
+        min-height: 50px;
+        font-size: 20px;
+        min-width: 220px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1240px) {
+    .hero-section__content {
+      padding: 0em 1em 1em 120px;
+    }
+
+    .hero-section__title.hero-section__title--lg {
+      font-size: 60px;
+      font-size: var(--section-hero-title-size);
+    }
+
+    .hero-section__text {
+      font-size: 18px;
+      line-height: 167%;
+      padding-right: 45px;
+
+      p + p {
+        margin-top: 16px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1600px) {
+    .hero-section.hero-section--bottom-space {
+      height: calc(100vh - 185px);
     }
   }
 </style>

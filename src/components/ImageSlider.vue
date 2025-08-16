@@ -163,8 +163,25 @@
 
   const props = defineProps<Props>()
 
-  // Generate unique IDs for this component instance
-  const componentId = ref(`${Date.now()}-${Math.random().toString(36).substr(2, 9)}`)
+  // Generate consistent IDs based on component content to avoid hydration mismatch
+  const generateComponentId = () => {
+    // Create a simple hash based on the first image src and settings
+    const firstImageSrc = props.images[0]?.src || 'default'
+    const titleStr = props.settings.title || 'notitle'
+    const combinedStr = `${firstImageSrc}-${titleStr}-${props.images.length}`
+
+    // Simple hash function
+    let hash = 0
+    for (let i = 0; i < combinedStr.length; i++) {
+      const char = combinedStr.charCodeAt(i)
+      hash = (hash << 5) - hash + char
+      hash = hash & hash // Convert to 32bit integer
+    }
+
+    return Math.abs(hash).toString(36)
+  }
+
+  const componentId = ref(`slider-${generateComponentId()}`)
   const swiperId = computed(() => `image-carousel-${componentId.value}`)
 
   // Swiper instance
@@ -176,6 +193,12 @@
 
     const swiperEl = document.getElementById(swiperId.value)
     if (!swiperEl) return
+
+    // Destroy existing instance if it exists
+    if (swiperInstance) {
+      swiperInstance.destroy(true, true)
+      swiperInstance = null
+    }
 
     swiperInstance = new Swiper(`#${swiperId.value}`, {
       modules: [Navigation, Pagination],

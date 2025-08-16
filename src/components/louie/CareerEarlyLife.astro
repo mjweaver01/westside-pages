@@ -130,8 +130,6 @@
     const tabs = section.querySelectorAll('[data-tab]')
     const tabsContent = section.querySelectorAll('[data-tab-content]')
 
-    console.log(tabs)
-
     tabs.forEach(function (tab) {
       tab.addEventListener('click', function (e) {
         var target = e.target as HTMLElement

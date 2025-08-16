@@ -91,6 +91,24 @@ import HorizontalAccordion from '@/components/HorizontalAccordion.astro'
         },
       ]}
     />
+    <HorizontalAccordion
+      sectionId="Inventions"
+      maxWidth={1360}
+      titles={{
+        title: 'Inventions',
+        text: "<p>Not only has Louie Simmons trained some of the most successful powerlifters and athletes in the world, but he's also an accomplished innovator dedicated to revolutionizing how we approach strength training for injury prevention and athletic betterment. Here is a detailed overview of the machines Louie invented and their purpose.</p>",
+      }}
+      items={[
+        {
+          heading: 'List of Inventions & Patents',
+          text: '<ul><li><a href="https://patents.google.com/patent/US5356359A" target="_blank" rel="noreferrer noopener">Original Reverse Hyper: U.S. Pat. 5,356,359</a></li><li><a href="https://patents.google.com/patent/US6491607B2" target="_blank" rel="noreferrer noopener">The Reverse Hyper: U.S. Pat. 6,491,607</a></li><li><a href="https://patents.google.com/patent/US10639515B2" target="_blank" rel="noreferrer noopener">Athletic Training Platform: U.S. Pat. 10,639,515</a></li><li><a href="https://patents.google.com/patent/US7473212B2" target="_blank" rel="noreferrer noopener">Bent Pendulum Reverse Hyper: 7,473,212</a></li><li><a href="https://patents.google.com/patent/US8529413B2" target="_blank" rel="noreferrer noopener">Dual Pendulum: U.S. Pat. 7,473,212</a></li><li><a href="https://patents.google.com/patent/US10974096B2" target="_blank" rel="noreferrer noopener">Maximal Recruiter: U.S. Pat. 10,974,096</a></li><li><a href="https://patents.google.com/patent/US9375599B1" target="_blank" rel="noreferrer noopener">Mechanical Reverse Hyper: U.S. Pat. 9,375,599</a></li><li><a href="https://patents.google.com/patent/US10065060B2" target="_blank" rel="noreferrer noopener">Static-Dynamic Developer: U.S. Pat. 10,065,060</a></li><li><a href="https://patents.google.com/patent/US8007414B2" target="_blank" rel="noreferrer noopener">Inverse Curl: U.S. Pat. 8,007,414</a></li><li><a href="https://patents.google.com/patent/US7435207B2" target="_blank" rel="noreferrer noopener">Scout Reverse Hyper: U.S. Pat. 7,435,207</a></li><li><a href="https://patents.google.com/patent/US7238148B2" target="_blank" rel="noreferrer noopener">Plyoswing: U.S. Pat. 7,238,148</a></li></ul>',
+        },
+        {
+          heading: 'Reverse Hyper',
+          text: '<ul><li>Louie Simmons conceived the <a href="https://www.westside-barbell.com/blogs/the-blog/louie-simmons-reverse-hyper">Reverse Hyper machine</a> while recovering from a severe back injury.</li><li>The machine, initially a simple wooden platform, aided his recovery and enabled him to lift over 700 lbs. again, despite a prior severe injury.</li><li>After suffering another back injury, Simmons opted to use the Reverse Hyper machine for his recovery instead of undergoing surgery.</li><li>The Reverse Hyper became a critical part of Louie\'s recovery and strength-building, leading to its widespread use in today\'s strength training community.</li></ul>',
+        },
+      ]}
+    />
     <Elite />
   </div>
 </BaseLayout>
