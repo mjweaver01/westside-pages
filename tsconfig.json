@@ -5,8 +5,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"],
-      "~/*": ["src/*"]
+      "@/*": ["src/*"]
     },
     "jsx": "preserve",
     "jsxImportSource": "astro",
