@@ -8,6 +8,8 @@ import LouieWSBB from '@/components/louie/WSBB.astro'
 import Elite from '@/components/louie/Elite.astro'
 import ImageSlider from '@/components/ImageSlider.vue'
 import HorizontalAccordion from '@/components/HorizontalAccordion.astro'
+import HorizontalTabs from '@/components/HorizontalTabs.vue'
+import BookInfo from '@/components/BookInfo.astro'
 ---
 
 <BaseLayout
@@ -110,5 +112,47 @@ import HorizontalAccordion from '@/components/HorizontalAccordion.astro'
       ]}
     />
     <Elite />
+    <HorizontalTabs
+      client:load
+      sectionId="LouiesLegacy"
+      maxWidth={1360}
+      containerImage={{
+        url: '/Logo.png',
+        alt: '',
+        width: 1348,
+        aspectRatio: 4.0,
+      }}
+      titles={{
+        title: "Louie's Legacy & Impact",
+        text: "<p>Louie Simmons' legacy remains prominent and unchallenged in the realm of powerlifting. His innovations continue to influence athletes' training, establishing him as a true pioneer and titan of the sport.</p><p>Under the guidance of Louie Simmons, Westside Barbell became a powerhouse for powerlifters. Let's break down some of the most significant accomplishments achieved.</p><h3>Elite Athletes: 110</h3><p>These figures illustrate the outstanding achievements made at Westside Barbell under the training methodologies of Louie Simmons. Each figure represents significant milestones in powerlifting and strength training, underscoring the impact of Simmons and Westside Barbell in the sport.</p>",
+      }}
+      items={[
+        {
+          heading: 'Elite Squat Athletes',
+          text: '<ul><li>800+ lb.: 106 Athletes</li><li>900+ lb.: 35 Athletes</li><li>1000+ lb.: 26 Athletes</li><li>1100+ lb.: 8 Athletes</li><li>1200+ lb.: 3 Athletes</li></ul>',
+        },
+        {
+          heading: 'Elite Deadlift Athletes',
+          text: '<ul><li>800+ lb.: 31 Athletes</li><li>900+ lb.: 3 Athletes</li></ul>',
+        },
+        {
+          heading: 'Elite Bench Press Athletes',
+          text: '<ul><li>600+ lb.: 99 Athletes</li><li>700+ lb.: 51 Athletes</li><li>800+ lb.: 14 Athletes</li><li>900+ lb.: 4 Athletes</li><li>1005 lb.: 1 Athlete</li></ul>',
+        },
+        {
+          heading: 'Elite Powerlifting Athlete Totals',
+          text: '<ul><li>2000+ lb.: 96 Athletes</li><li>2500+ lb.: 15 Athletes</li><li>2600+ lb.: 9 Athletes</li><li>2800+ lb.: 4 Athletes</li><li>All-Time World Record Total (3005 lb.): 1 Athlete</li></ul>',
+        },
+        {
+          heading: 'Additional Contributions',
+          text: '<p>Louie Simmons has made significant contributions to the field of strength training, and his impact is felt worldwide. He introduced critical strength training tools like the Weighted Sled and Bench Boards, and his popularization of accommodating resistance methods like Chains and Bands has shifted the conventional training paradigm. His pioneering work on the <a href="https://www.westside-barbell.com/blogs/the-blog/how-to-execute-a-proper-box-squat">Box Squats method</a> has fundamentally redefined squat training.</p><p>One crucial aspect of Simmons\' legacy is his generosity of knowledge. He has shared his insights and techniques through articles in print and online and has always made himself available to discuss strength training with anyone interested. This fosters a sense of community and shared learning</p><p>Simmons\' influence extends far beyond the gym and has become a part of strength training culture at large. He popularized the gym chalkboard concept, a simple but powerful tool that highlights gym lifts and fosters a competitive and supportive culture among athletes.</p>',
+        },
+        {
+          heading: 'Who Did Louie Simmons Train?',
+          text: "<p>Simmons' expertise has been recognized and sought after by professional sports teams, serving as a strength consultant for the Cleveland Browns, Green Bay Packers, Seattle Seahawks, and many college football teams. He has worked closely with top-level strength coaches like Kent Johnson, Johnny Parker, and Buddy Morris, disseminating his innovative methods and insights.</p><p>Simmons' influence extends to the world of athletics, having trained two Olympic gold medalists, 400-meter sprinters Butch Reynolds and Moe Robinson. This is further testament to his versatile understanding of strength and conditioning for a wide range of sports disciplines. Louie Simmons' immense contribution to the field of strength training continues to resonate and impact athletes across the globe.</p><ol><li>Sue Benford</li><li>Doris Crawford Simmons</li><li>Mariah Liggett</li><li>Laura Dodd</li><li>Sue Meaney</li><li>Amy Weisberger</li><li>Melissa Stevens</li><li>Pam Crisp</li><li>Heidi Howar</li><li>Sinead Corley</li><li>Tom Paulucci</li><li>Ron Jeter</li><li>Nick Winters</li><li>Matt Dimel</li><li>Dre Henry</li><li>Marlon</li><li>Gabe Ritter</li><li>Bob Young</li><li>Chuck Vogelpohl</li><li>Marcus Marinelli</li><li>Kevin Randleman</li><li>Matt Brown</li><li>Dorian Price</li><li>Kenny Patterson</li><li>Jerry Obradovic</li><li>George Halbert</li><li>J M Blakely</li><li>Jeremy Smith</li><li>Joe McCoy</li><li>Daryl Mayo</li><li>Tim Harold</li><li>Zack Cole</li><li>Josh Gutridge</li><li>Joe Bayles</li><li>Butch Reynolds</li><li>Mark Bell</li><li>Dave Hoff</li><li>Moe Robinson</li><li>Arnold Coleman</li><li>Phil Harrington</li><li>Vlad Alhazov</li><li>Greg Panora</li><li>Don Damron</li><li>Jimmy Ritchie</li><li>Bob Coe</li><li>Chris Spiegel</li><li>Josh Conley</li><li>Jake Norman</li><li>David Jenks</li><li>Matt Smith</li><li>Mike Ruggiera</li><li>Mark Burrows</li><li>Jim Wendler</li><li>Bob Cole</li><li>Jeff Adams</li><li>Karen Sizemore</li><li>Matt Hawkins</li><li>A. J. Roberts</li><li>Laura Phelps-Sweatt and Shane Sweatt</li><li>Brent Tracey</li><li>George Nichols</li><li>Doug Heath</li><li>Jay Fry</li><li>Jason Coker</li><li>Rob Fusner</li><li>Paul Keyes</li><li>Mike Wolfe</li><li>Burley Hawk</li><li>J.L. Holdsworth</li><li>Tony Bolognone</li><li>Jimmy Seitzer</li></ol>",
+        },
+      ]}
+    />
+    <BookInfo />
   </div>
 </BaseLayout>
