@@ -13,10 +13,10 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,vue,astro,json,css,scss,md}\""
   },
   "dependencies": {
-    "@astrojs/vue": "^4.5.0",
+    "@astrojs/vue": "^5.1.0",
     "@iframe-resizer/child": "^5.5.2",
     "@iframe-resizer/parent": "^5.5.2",
-    "astro": "^4.15.0",
+    "astro": "^5.13.2",
     "swiper": "^11.2.10",
     "vue": "^3.4.0"
   },
@@ -26,8 +26,8 @@
     "@vue/eslint-config-prettier": "^10.2.0",
     "@vue/eslint-config-typescript": "^14.6.0",
     "eslint": "^9.33.0",
-    "eslint-plugin-vue": "^10.4.0",
     "eslint-plugin-astro": "^0.29.0",
+    "eslint-plugin-vue": "^10.4.0",
     "prettier": "^3.0.0",
     "prettier-plugin-astro": "^0.12.0",
     "sass": "^1.77.0",

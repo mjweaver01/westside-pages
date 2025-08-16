@@ -1,5 +1,9 @@
 <template>
-  <header class="site-header" :class="{ 'invert-header': invertHeader, 'menu-open': isMenuOpen }">
+  <header
+    v-if="!isIframeMode"
+    class="site-header"
+    :class="{ 'invert-header': invertHeader, 'menu-open': isMenuOpen }"
+  >
     <div class="max-width">
       <nav class="header-nav">
         <div class="logo">
@@ -30,7 +34,8 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import HamburgerMenu from './HamburgerMenu.vue'
-  import { links } from '@/links.ts'
+  import { links } from '@/utils/links'
+  import { detectIframeMode } from '@/utils/iframe'
 
   interface Props {
     invertHeader?: boolean
@@ -39,6 +44,8 @@
   const props = withDefaults(defineProps<Props>(), {
     invertHeader: false,
   })
+
+  const isIframeMode = detectIframeMode()
 
   const isMenuOpen = ref(false)
 

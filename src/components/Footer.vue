@@ -1,5 +1,5 @@
 <template>
-  <footer class="site-footer">
+  <footer v-if="!isIframeMode" class="site-footer">
     <div class="max-width">
       <div class="footer-content">
         <div class="footer-section">
@@ -36,12 +36,15 @@
 </template>
 
 <script setup lang="ts">
-  import { links } from '../links'
+  import { detectIframeMode } from '@/utils/iframe'
+  import { links } from '@/utils/links'
+  const isIframeMode = detectIframeMode()
 </script>
 
 <style lang="scss">
-  @use '@/scss/variables.scss' as *;
+  @use '../scss/variables.scss' as *;
 
+  // Footer styles
   .site-footer {
     background: $secondary-color;
     color: $white;

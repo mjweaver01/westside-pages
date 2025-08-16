@@ -1,5 +1,6 @@
 ---
-import BaseLayoutComponent from '@/components/BaseLayout.vue'
+import Header from '../components/Header.vue'
+import Footer from '../components/Footer.vue'
 
 export interface Props {
   title?: string
@@ -24,18 +25,57 @@ const {
     <title>{title}</title>
   </head>
   <body>
-    <BaseLayoutComponent
-      client:load
-      title={title}
-      description={description}
-      invertHeader={invertHeader}
-    >
-      <slot />
-    </BaseLayoutComponent>
+    <div id="app">
+      <Header invert-header={invertHeader} client:only />
+
+      <main>
+        <slot />
+      </main>
+
+      <Footer client:only />
+    </div>
   </body>
 </html>
 
 <style lang="scss" is:global>
   @use '../scss/global.scss';
   @use '../scss/cms.scss';
+
+  // Base app styles
+  #app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    main {
+      flex: 1;
+    }
+  }
+
+  // Iframe mode styles
+  #app.iframe-mode {
+    min-height: auto;
+
+    main {
+      margin: 0;
+      padding: 0;
+      flex: none;
+    }
+  }
+
+  // Global iframe mode styles
+  body.iframe-mode {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+
+    * {
+      box-sizing: border-box;
+    }
+
+    main {
+      width: 100%;
+      overflow-x: hidden;
+    }
+  }
 </style>

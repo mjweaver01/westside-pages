@@ -71,10 +71,10 @@
             a 722lb deadlift, and a 600lb bench press.
           </p>
         </div>
-        <div class="info__buttons">
+        <div class="info__button bio-button">
           <a
             href="https://www.westside-barbell.com/collections/books/products/wsbb-the-iron-samurai-the-true-story-of-westside-barbell"
-            class="button button--white"
+            class="button button--primary"
           >
             Read Louie's Biography
           </a>
@@ -111,10 +111,10 @@
             operating a crane and even became a certified welder.
           </p>
         </div>
-        <div class="info__buttons">
+        <div class="info__button bio-button">
           <a
             href="https://www.westside-barbell.com/blogs/the-blog/conjugate-system"
-            class="button button--secondary"
+            class="button button--primary"
           >
             Read Louie's Biography
           </a>
@@ -124,17 +124,17 @@
   </div>
 </section>
 
-<script is:inline>
-  document.addEventListener('DOMContentLoaded', function () {
-    const section = document.querySelector('.tab-column')
-    if (!section) return
-
+<script>
+  const section = document.querySelector('.tab-column')
+  if (section) {
     const tabs = section.querySelectorAll('[data-tab]')
     const tabsContent = section.querySelectorAll('[data-tab-content]')
 
+    console.log(tabs)
+
     tabs.forEach(function (tab) {
       tab.addEventListener('click', function (e) {
-        var target = e.target
+        var target = e.target as HTMLElement
         if (!target || !target.classList) return
 
         if (target.classList.contains('active')) {
@@ -157,10 +157,12 @@
         }
       })
     })
-  })
+  }
 </script>
 
-<style>
+<style lang="scss">
+  @use '@/scss/variables.scss' as *;
+
   .tab-column {
     padding-top: 40px;
     padding-bottom: 39px;
@@ -203,7 +205,10 @@
     margin-top: 8px;
     line-height: 134%;
     text-align: center;
-    font-family: Knockout HTF31 JuniorMiddle, Helvetica, sans-serif;
+    font-family:
+      Knockout HTF31 JuniorMiddle,
+      Helvetica,
+      sans-serif;
   }
 
   .tab-column__titles .info-title + .info-text {
@@ -263,6 +268,11 @@
     transition: background-color 0.3s ease-in;
   }
 
+  .tab-column .info__button.bio-button .button {
+    background: $primary-color;
+    border-color: $primary-color;
+  }
+
   .tab-column .info__buttons .button.active {
     background-color: #306cf4bf;
     color: #fff;
@@ -284,82 +294,16 @@
     display: block;
   }
 
-  /* Basic styles */
-  .max-width {
-    max-width: 987px;
-    margin: 0 auto;
-  }
-
-  .max-width--paddings {
-    padding: 0 18px;
-  }
-
-  .button {
-    padding: 5px 17px;
-    min-height: 40px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    text-transform: none;
-    line-height: 1;
-    font-weight: 500;
-    font-family: Knockout HTF31 JuniorMiddle, Helvetica, sans-serif;
-    transition: background-color 0.25s ease-in, border-color 0.25s ease-in;
-    text-decoration: none;
-    cursor: pointer;
-    margin-right: 10px;
-  }
-
-  .button:last-child {
-    margin-right: 0;
-  }
-
-  .button--primary {
-    background: transparent;
-    border: 2px solid #ffffff;
-    color: #ffffff;
-  }
-
-  .button--primary:hover {
-    background: #ffffff;
-    color: #000000;
-  }
-
-  .button--primary.active {
-    background: #ffffff;
-    color: #000000;
-  }
-
-  .button--white {
-    background: #fff;
-    color: #212121;
-  }
-
-  .button--white:hover {
-    background: #e6e6e6;
-  }
-
-  .button--secondary {
-    background: transparent;
-    border: 2px solid #ffffff;
-    color: #ffffff;
-  }
-
-  .button--secondary:hover {
-    background: #ffffff;
-    color: #000000;
-  }
-
   .info-title {
     font-weight: 500;
     font-size: 24px;
     line-height: 1.2;
     text-align: center;
     color: #ffffff;
-    font-family: Knockout HTF51 Middle, Helvetica, sans-serif;
+    font-family:
+      Knockout HTF51 Middle,
+      Helvetica,
+      sans-serif;
     margin-bottom: 1rem;
   }
 
@@ -368,7 +312,10 @@
     font-size: 24px;
     line-height: 150%;
     text-transform: uppercase;
-    font-family: Knockout Ult Sumo, Helvetica, sans-serif;
+    font-family:
+      Knockout Ult Sumo,
+      Helvetica,
+      sans-serif;
   }
 
   .info-title p {
@@ -382,15 +329,14 @@
   }
 
   .info-text {
-    font-family: Knockout HTF31 JuniorMiddle, Helvetica, sans-serif;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33;
-    max-width: 800px;
     margin: 0 auto;
   }
 
   .info-text p {
+    width: 100%;
     font-size: inherit;
     margin: 0;
     padding: 0;
@@ -402,14 +348,17 @@
 
   .info__buttons {
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 15px;
   }
 
   .block-text {
-    font-family: Knockout HTF31 JuniorMiddle, Helvetica, sans-serif;
+    font-family:
+      Knockout HTF31 JuniorMiddle,
+      Helvetica,
+      sans-serif;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33;
