@@ -1,9 +1,9 @@
 <template>
-  <button @click="toggle" class="hamburger" :class="{ active: isActive }">
+  <div @click="toggle" class="hamburger" :class="{ 'hamburger-active': isActive }">
     <span class="hamburger-line"></span>
     <span class="hamburger-line"></span>
     <span class="hamburger-line"></span>
-  </button>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -47,12 +47,11 @@
       width: 30px;
       height: 3px;
       background: $black;
-      transition: all 0.3s linear;
       position: relative;
       transform-origin: 1px;
     }
 
-    &.active {
+    &.hamburger-active {
       .hamburger-line {
         &:first-child {
           transform: rotate(45deg);
