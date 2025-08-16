@@ -1,12 +1,14 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "extends": "astro/tsconfigs/strict",
   "include": [
     "env.d.ts",
     "src/**/*",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "src/**/*.astro"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ],
   "compilerOptions": {
     "baseUrl": ".",
@@ -14,9 +16,6 @@
       "@/*": ["./src/*"],
       "~/*": ["./src/*"]
     },
-    "types": [
-      "vite/client",
-      "vue"
-    ]
+    "jsx": "preserve"
   }
 }

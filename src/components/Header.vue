@@ -3,17 +3,17 @@
     <div class="max-width">
       <nav class="header-nav">
         <div class="logo">
-          <RouterLink to="/">
-            <img src="/logo.svg" alt="Westside Barbell" />
-          </RouterLink>
+          <a href="/">
+            <img src="/logo.png" alt="Westside Barbell" />
+          </a>
         </div>
 
         <ul class="nav-links">
           <li>
-            <RouterLink to="/" class="nav-link">Home</RouterLink>
+            <a href="/" class="nav-link">Home</a>
           </li>
           <li>
-            <RouterLink to="/about" class="nav-link">About</RouterLink>
+            <a href="/about" class="nav-link">About</a>
           </li>
         </ul>
 
@@ -23,8 +23,8 @@
       </nav>
 
       <div v-if="isMenuOpen" class="mobile-menu">
-        <RouterLink to="/" @click="closeMenu" class="mobile-nav-link">Home</RouterLink>
-        <RouterLink to="/about" @click="closeMenu" class="mobile-nav-link">About</RouterLink>
+        <a href="/" @click="closeMenu" class="mobile-nav-link">Home</a>
+        <a href="/about" @click="closeMenu" class="mobile-nav-link">About</a>
       </div>
     </div>
   </header>
@@ -32,7 +32,6 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { RouterLink } from 'vue-router'
   import HamburgerMenu from './HamburgerMenu.vue'
 
   const isMenuOpen = ref(false)
@@ -85,8 +84,7 @@
     font-weight: 500;
     transition: color 0.25s;
 
-    &:hover,
-    &.router-link-active {
+    &:hover {
       color: $primary-color;
     }
   }
@@ -117,8 +115,7 @@
     font-weight: 500;
     padding: 0.5rem 0;
 
-    &:hover,
-    &.router-link-active {
+    &:hover {
       color: $primary-color;
     }
   }

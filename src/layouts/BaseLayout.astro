@@ -1,0 +1,47 @@
+---
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.astro';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = "Westside Pages", description = "The world's strongest training facility" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div id="app">
+      <Header client:load />
+      <main>
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>
+
+<style lang="scss" is:global>
+  @use '../scss/global.scss';
+</style>
+
+<style lang="scss">
+  #app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    main {
+      flex: 1;
+    }
+  }
+</style>

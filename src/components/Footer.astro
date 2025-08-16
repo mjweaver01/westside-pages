@@ -1,39 +1,37 @@
-<template>
-  <footer class="site-footer">
-    <div class="max-width">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>Westside Barbell</h3>
-          <p>The world's strongest training facility</p>
-        </div>
+---
+// Footer component - no interactivity needed, so we convert to Astro
+---
 
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><RouterLink to="/">Home</RouterLink></li>
-            <li><RouterLink to="/about">About</RouterLink></li>
-          </ul>
-        </div>
-
-        <div class="footer-section">
-          <h4>Contact</h4>
-          <p>Columbus, Ohio</p>
-          <p>info@westsidebarbell.com</p>
-        </div>
+<footer class="site-footer">
+  <div class="max-width">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Westside Barbell</h3>
+        <p>The world's strongest training facility</p>
       </div>
 
-      <div class="footer-bottom">
-        <p>&copy; 2024 Westside Barbell. All rights reserved.</p>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>Columbus, Ohio</p>
+        <p>info@westsidebarbell.com</p>
       </div>
     </div>
-  </footer>
-</template>
 
-<script setup lang="ts">
-  import { RouterLink } from 'vue-router'
-</script>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Westside Barbell. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @use '@/scss/variables.scss' as *;
 
   .site-footer {

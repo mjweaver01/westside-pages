@@ -1,11 +1,15 @@
-<template>
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Home - Westside Barbell" description="The world's strongest training facility">
   <div class="homepage">
     <section class="hero-section">
       <div class="hero-content max-width">
         <h1 class="hero-title">Welcome to Westside Barbell</h1>
         <p class="hero-subtitle">The world's strongest training facility</p>
         <div class="hero-actions">
-          <RouterLink to="/about" class="button secondary">Learn More</RouterLink>
+          <a href="/about" class="button secondary">Learn More</a>
         </div>
       </div>
     </section>
@@ -30,13 +34,9 @@
       </div>
     </section>
   </div>
-</template>
+</BaseLayout>
 
-<script setup lang="ts">
-  import { RouterLink } from 'vue-router'
-</script>
-
-<style lang="scss" scoped>
+<style lang="scss">
   @use '@/scss/variables.scss' as *;
 
   .hero-section {
