@@ -14,6 +14,9 @@ const {
   description = "The world's strongest training facility",
   invertHeader = false,
 } = Astro.props
+
+// Server-side iframe detection
+const isIframeMode = Astro.url.searchParams.get('iframe') === 'true'
 ---
 
 <!doctype html>
@@ -29,9 +32,32 @@ const {
       src={`https://static.klaviyo.com/onsite/js/${KLAVIYO_ID}/klaviyo.js?company_id=${KLAVIYO_ID}`}
     ></script>
     <title>{title}</title>
+    <script is:inline>
+      // Immediate iframe detection to prevent FOUC
+      ;(function () {
+        const isInIframe = window.self !== window.top
+        const urlParams = new URLSearchParams(window.location.search)
+        const iframeParam = urlParams.get('iframe') === 'true'
+        const isIframeMode = isInIframe || iframeParam
+
+        if (isIframeMode) {
+          document.documentElement.classList.add('iframe-mode')
+          document.addEventListener('DOMContentLoaded', function () {
+            document.body.classList.add('iframe-mode')
+            const app = document.getElementById('app')
+            if (app) app.classList.add('iframe-mode')
+
+            // Load iframe resizer
+            const script = document.createElement('script')
+            script.src = 'https://cdn.jsdelivr.net/npm/@iframe-resizer/child@5.5.2/index.umd.js'
+            document.head.appendChild(script)
+          })
+        }
+      })()
+    </script>
   </head>
-  <body>
-    <div id="app">
+  <body class={isIframeMode ? 'iframe-mode' : ''}>
+    <div id="app" class={isIframeMode ? 'iframe-mode' : ''}>
       <Header invert-header={invertHeader} client:only />
 
       <main>
@@ -55,11 +81,18 @@ const {
     padding-top: 59px;
 
     @media (min-width: $desktop) {
-      padding-top: 85px;
+      padding-top: 72px;
     }
 
     main {
       flex: 1;
+    }
+  }
+
+  // Immediate iframe mode styles applied to html element
+  html.iframe-mode {
+    #app {
+      padding-top: 0 !important;
     }
   }
 

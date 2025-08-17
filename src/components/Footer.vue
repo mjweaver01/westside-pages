@@ -1,5 +1,5 @@
 <template>
-  <footer v-if="!isIframeMode" class="site-footer">
+  <footer class="site-footer">
     <div class="max-width">
       <div class="footer-content">
         <div class="footer-section">
@@ -36,9 +36,7 @@
 </template>
 
 <script setup lang="ts">
-  import { detectIframeMode } from '@/utils/iframe'
   import { links } from '@/utils/links'
-  const isIframeMode = detectIframeMode()
 </script>
 
 <style lang="scss">
@@ -50,6 +48,11 @@
     color: $white;
     padding: 3rem 0 1rem;
     margin-top: auto;
+  }
+
+  // Hide footer in iframe mode
+  html.iframe-mode .site-footer {
+    display: none !important;
   }
 
   .footer-logo {
