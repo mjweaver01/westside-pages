@@ -48,7 +48,7 @@
 
 <script setup lang="ts">
   import { ref, onMounted, onUnmounted, computed } from 'vue'
-  import HamburgerMenu from './HamburgerMenu.vue'
+  import HamburgerMenu from '@/components/nav/HamburgerMenu.vue'
   import { NAVIGATION_LINKS } from '@/utils/constants'
 
   interface Props {

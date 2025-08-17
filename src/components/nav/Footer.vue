@@ -40,7 +40,7 @@
 </script>
 
 <style lang="scss">
-  @use '../scss/variables.scss' as *;
+  @use '@/scss/variables.scss' as *;
 
   // Footer styles
   .site-footer {

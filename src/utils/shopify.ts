@@ -5,8 +5,8 @@ import type {
   ShopifyProductsResponse,
   ShopifyBlogPostsResponse,
   CarouselItem,
-} from '../types/shopify'
-import { PRODUCTS_QUERY, BLOG_POSTS_QUERY } from './constants'
+} from '@/types/shopify'
+import { PRODUCTS_QUERY, BLOG_POSTS_QUERY } from '@/utils/constants'
 
 // Default Shopify configuration - should be set via environment variables
 const defaultConfig: ShopifyConfig = {

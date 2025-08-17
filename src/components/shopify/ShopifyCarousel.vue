@@ -188,7 +188,7 @@
   import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
   import { Swiper } from 'swiper'
   import { Navigation, Pagination } from 'swiper/modules'
-  import type { CarouselItem, CarouselSettings } from '../types/shopify'
+  import type { CarouselItem, CarouselSettings } from '@/types/shopify'
 
   // Import Swiper styles
   import 'swiper/css'

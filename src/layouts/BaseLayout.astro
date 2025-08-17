@@ -1,7 +1,7 @@
 ---
-import Header from '../components/Header.vue'
-import Footer from '../components/Footer.vue'
-import { KLAVIYO_ID } from '../utils/constants'
+import Header from '@/components/nav/Header.vue'
+import Footer from '@/components/nav/Footer.vue'
+import { KLAVIYO_ID } from '@/utils/constants'
 
 export interface Props {
   title?: string
@@ -70,8 +70,8 @@ const isIframeMode = Astro.url.searchParams.get('iframe') === 'true'
 </html>
 
 <style lang="scss" is:global>
-  @use '../scss/global.scss';
-  @use '../scss/cms.scss';
+  @use '@/scss/global.scss';
+  @use '@/scss/cms.scss';
 
   // Base app styles
   #app {
