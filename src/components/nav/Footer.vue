@@ -10,7 +10,7 @@
         <div class="footer-section">
           <h6>Quick Links</h6>
           <ul>
-            <li v-for="link in links" :key="link.text">
+            <li v-for="link in NAVIGATION_LINKS" :key="link.text">
               <a :href="link.url">{{ link.text }}</a>
             </li>
           </ul>
@@ -36,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-  import { links } from '@/utils/links'
+  import { NAVIGATION_LINKS } from '@/utils/constants'
 </script>
 
 <style lang="scss">

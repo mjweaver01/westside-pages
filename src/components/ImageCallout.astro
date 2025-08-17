@@ -1,0 +1,101 @@
+---
+import { Image } from 'astro:assets'
+
+export interface CalloutItem {
+  id?: string
+  name: string
+  title?: string
+  subtitle?: string
+  image: {
+    src: ImageMetadata
+    alt: string
+    width: number
+    height: number
+  }
+  content: string[] | string
+  imagePosition?: 'left' | 'right'
+  style?: {
+    scrollMarginTop?: string
+  }
+  links?: {
+    text: string
+    href: string
+    target?: string
+    rel?: string
+  }[]
+}
+
+export interface Props {
+  items: CalloutItem[]
+  className?: string
+}
+
+const { items, className = '' } = Astro.props
+---
+
+<div class={`people ${className}`}>
+  {
+    items.map((item, index) => {
+      const isImageLeft = item.imagePosition === 'left' || item.imagePosition === undefined
+      const rowClass = isImageLeft ? 'row' : 'row row-reverse'
+      const contentArray = Array.isArray(item.content) ? item.content : [item.content]
+
+      return (
+        <div class={`person ${rowClass}`}>
+          <div class="column-12-tablet-vert-6">
+            <div class="person-image">
+              <Image
+                class="full-width"
+                src={item.image.src}
+                alt={item.image.alt}
+                width={item.image.width}
+                height={item.image.height}
+                layout="constrained"
+                fit="cover"
+              />
+            </div>
+          </div>
+          <div class="column-12-tablet-vert-6">
+            <div class="person-description">
+              <h1
+                class="light-blue"
+                id={item.id}
+                style={
+                  item.style?.scrollMarginTop
+                    ? `scroll-margin-top: ${item.style.scrollMarginTop};`
+                    : undefined
+                }
+              >
+                {item.name}
+              </h1>
+              {item.title && <h4>{item.title}</h4>}
+              {item.subtitle && <h2>{item.subtitle}</h2>}
+              {contentArray.map(paragraph => {
+                // Check if this is a heading (starts with an uppercase letter and has a colon)
+                if (
+                  paragraph.includes(':') &&
+                  paragraph.split(':')[0].length < 50 &&
+                  !paragraph.includes('.')
+                ) {
+                  return <h4>{paragraph}</h4>
+                }
+                // Check if paragraph contains links
+                if (item.links && item.links.some(link => paragraph.includes(link.text))) {
+                  // Handle paragraph with links - parse and replace
+                  let processedParagraph = paragraph
+                  item.links.forEach(link => {
+                    const linkHtml = `<a href="${link.href}"${link.target ? ` target="${link.target}"` : ''}${link.rel ? ` rel="${link.rel}"` : ''}>${link.text}</a>`
+                    processedParagraph = processedParagraph.replace(link.text, linkHtml)
+                  })
+                  return <p set:html={processedParagraph} />
+                } else {
+                  return <p>{paragraph}</p>
+                }
+              })}
+            </div>
+          </div>
+        </div>
+      )
+    })
+  }
+</div>

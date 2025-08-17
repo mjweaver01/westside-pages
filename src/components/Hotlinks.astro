@@ -1,12 +1,26 @@
+---
+export interface HotlinkItem {
+  href: string
+  text: string
+}
+
+export interface Props {
+  links: HotlinkItem[]
+}
+
+const { links } = Astro.props
+---
+
 <section class="shopify-section section-anchor-panel">
   <div class="anchor-panel">
     <div class="anchor-panel__wrapper">
-      <a class="anchor-panel__link" href="#LouiesBackground"> Louie's Background</a>
-      <a class="anchor-panel__link" href="#CareerAndEarlyLife"> Early Life &amp; Career</a>
-      <a class="anchor-panel__link" href="#WestsideBarbell"> Westside Barbell</a>
-      <a class="anchor-panel__link" href="#Contributions"> Contributions</a>
-      <a class="anchor-panel__link" href="#LouiesLegacy"> Louie's Legacy</a>
-      <a class="anchor-panel__link" href="#Inventions"> Inventions</a>
+      {
+        links.map(link => (
+          <a class="anchor-panel__link" href={link.href}>
+            {link.text}
+          </a>
+        ))
+      }
     </div>
   </div>
 </section>

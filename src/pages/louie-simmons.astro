@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
-import LouieHeader from '@/components/louie/LouieHeader.astro'
-import LouieHotlinks from '@/components/louie/LouieHotlinks.astro'
+import HeaderHero from '@/components/HeaderHero.astro'
+import Hotlinks from '@/components/Hotlinks.astro'
 import LouiesBackground from '@/components/louie/LouiesBackground.astro'
 import CareerEarlyLife from '@/components/louie/CareerEarlyLife.astro'
 import LouieWSBB from '@/components/louie/WSBB.astro'
@@ -12,6 +12,7 @@ import HorizontalTabs from '@/components/HorizontalTabs.vue'
 import BookInfo from '@/components/BookInfo.astro'
 
 // Import all the louie images
+import louieSquatHero from '@/assets/pages/louie/Louie_Simmons_Squat_Hero.jpg'
 import louieAndChuck from '@/assets/pages/louie/Louie_Simmons_and_Chuck_Vogelpoh.jpg'
 import louieAndWestside from '@/assets/pages/louie/Louie_Simmons_and_Westside_Barbe.jpg'
 import louieBenchPress from '@/assets/pages/louie/Louie_Simmons_Bench_Press.jpg'
@@ -29,8 +30,39 @@ import louieScoutHyper from '@/assets/pages/louie/LouieSimmonsScouthyper.jpg'
   invertHeader={true}
 >
   <div class="page about">
-    <LouieHeader />
-    <LouieHotlinks />
+    <HeaderHero
+      heroImage={louieSquatHero}
+      title="Louie Simmons"
+      subtitle="Westside Barbell Founder"
+      description={[
+        'Louie Simmons was an influential figure in strength and conditioning, renowned for his inventive training methodologies and decades-long career in powerlifting. Born in 1947, he was best known as the founder of Westside Barbell, an exclusive, invitation-only training facility in Columbus, Ohio.',
+        'Westside Barbell garnered a reputation as the "Mecca of Powerlifting," boasting several world record holders among its members.',
+      ]}
+      listItems={[
+        "He competed in powerlifting for over three decades, achieving 'Elite' status in five weight classes.",
+        'Louie developed the <a href="https://www.westside-barbell.com/pages/conjugate-method" style="color:white">Conjugate System</a>, a revolutionary training methodology.',
+        'His focus on injury prevention led to the invention of strength training equipment, notably the Reverse Hyper machine.',
+        'Sports teams, military and law enforcement, and athletes worldwide adopted his training principles.',
+      ]}
+      buttonText="Read Louie Simmons Articles"
+      buttonUrl="https://www.westside-barbell.com/blogs/the-blog/tagged/louie-simmons"
+      backgroundColor="rgba(0,0,0,0)"
+      textColor="#ffffff"
+      titleSize="60px"
+      imageAlt="Louie Simmons"
+      imageWidth={2000}
+      imageHeight={1332.9999999999998}
+    />
+    <Hotlinks
+      links={[
+        { href: '#LouiesBackground', text: "Louie's Background" },
+        { href: '#CareerAndEarlyLife', text: 'Early Life & Career' },
+        { href: '#WestsideBarbell', text: 'Westside Barbell' },
+        { href: '#Contributions', text: 'Contributions' },
+        { href: '#LouiesLegacy', text: "Louie's Legacy" },
+        { href: '#Inventions', text: 'Inventions' },
+      ]}
+    />
     <LouiesBackground />
     <CareerEarlyLife />
     <LouieWSBB />

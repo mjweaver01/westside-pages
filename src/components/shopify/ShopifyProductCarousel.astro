@@ -1,0 +1,91 @@
+---
+import ShopifyCarousel from './ShopifyCarousel.vue'
+import { fetchProductsForCarousel } from '../utils/shopify'
+import type { CarouselSettings, CarouselItem } from '../types/shopify'
+
+export interface Props {
+  title?: string
+  backgroundColor?: string
+  addBoxShadow?: boolean
+  itemLimit?: number
+  shopLinkText?: string
+  primaryButton?: boolean
+  noTopPadding?: boolean
+  noBottomPadding?: boolean
+  collectionHandle?: string
+  sortKey?:
+    | 'TITLE'
+    | 'PRICE'
+    | 'BEST_SELLING'
+    | 'CREATED_AT'
+    | 'ID'
+    | 'RELEVANCE'
+    | 'UPDATED_AT'
+    | 'VENDOR'
+  reverse?: boolean
+  linkUrl?: string
+}
+
+const {
+  title = 'Featured Products',
+  backgroundColor = 'rgba(0,0,0,0)',
+  addBoxShadow = true,
+  itemLimit = 8,
+  shopLinkText = 'View All Products',
+  primaryButton = true,
+  noTopPadding = false,
+  noBottomPadding = false,
+  collectionHandle,
+  sortKey = 'BEST_SELLING',
+  reverse = false,
+  linkUrl = '/collections/all',
+} = Astro.props
+
+const settings: CarouselSettings = {
+  title,
+  backgroundColor,
+  addBoxShadow,
+  itemLimit,
+  shopLinkText,
+  primaryButton,
+  noTopPadding,
+  noBottomPadding,
+}
+
+// Fetch products from Shopify
+let products: CarouselItem[] = []
+try {
+  const query = collectionHandle ? `collection:${collectionHandle}` : undefined
+  products = await fetchProductsForCarousel({
+    first: itemLimit,
+    sortKey,
+    reverse,
+    query,
+  })
+} catch (error) {
+  console.error('Error fetching products for carousel:', error)
+}
+---
+
+<!-- Only render if we have products -->{
+  products.length > 0 && (
+    <ShopifyCarousel items={products} settings={settings} linkUrl={linkUrl} client:load />
+  )
+}
+
+<!-- Fallback if no products -->
+{
+  products.length === 0 && (
+    <div class="carousel-fallback">
+      <p>Unable to load products at this time.</p>
+    </div>
+  )
+}
+
+<style>
+  .carousel-fallback {
+    padding: 2rem;
+    text-align: center;
+    color: #666;
+  }
+</style>

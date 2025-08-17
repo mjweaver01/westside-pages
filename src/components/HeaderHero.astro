@@ -1,25 +1,56 @@
 ---
 import { Image } from 'astro:assets'
-import louieSquatHero from '@/assets/pages/Louie_Simmons_Squat_Hero.jpg'
+
+export interface Props {
+  heroImage: ImageMetadata
+  title: string
+  subtitle?: string
+  description: string[]
+  listItems?: string[]
+  buttonText?: string
+  buttonUrl?: string
+  backgroundColor?: string
+  textColor?: string
+  titleSize?: string
+  imageAlt?: string
+  imageWidth?: number
+  imageHeight?: number
+}
+
+const {
+  heroImage,
+  title,
+  subtitle,
+  description,
+  listItems = [],
+  buttonText,
+  buttonUrl,
+  backgroundColor = 'rgba(0,0,0,0)',
+  textColor = '#ffffff',
+  titleSize = '60px',
+  imageAlt = title,
+  imageWidth = 2000,
+  imageHeight = 1332.9999999999998,
+} = Astro.props
 ---
 
 <section class="shopify-section index-hero index-hero--new">
-  <section class="hero-section" style="background-color: rgba(0,0,0,0)">
+  <section class="hero-section" style={`background-color: ${backgroundColor}`}>
     <Image
-      src={louieSquatHero}
-      alt="Louie Simmons"
-      width={2000}
-      height={1332.9999999999998}
+      src={heroImage}
+      alt={imageAlt}
+      width={imageWidth}
+      height={imageHeight}
       class="hero-section__image hero-section__image--mobile"
       layout="constrained"
       fit="cover"
       priority
     />
     <Image
-      src={louieSquatHero}
-      alt="Louie Simmons"
-      width={2000}
-      height={1332.9999999999998}
+      src={heroImage}
+      alt={imageAlt}
+      width={imageWidth}
+      height={imageHeight}
       class="hero-section__image hero-section__image--desktop"
       layout="constrained"
       fit="cover"
@@ -30,57 +61,45 @@ import louieSquatHero from '@/assets/pages/Louie_Simmons_Squat_Hero.jpg'
       <div class="hero-section__content">
         <h1
           class="hero-section__title hero-section__title--lg"
-          style="color: #ffffff; --section-hero-title-size: 60px;"
+          style={`color: ${textColor}; --section-hero-title-size: ${titleSize};`}
         >
-          Louie Simmons
+          {title}
         </h1>
 
-        <h4 class="hero-section__title hero-section__title--md" style="color: #ffffff">
-          Westside Barbell Founder
-        </h4>
+        {
+          subtitle && (
+            <h4 class="hero-section__title hero-section__title--md" style={`color: ${textColor}`}>
+              {subtitle}
+            </h4>
+          )
+        }
 
-        <div class="block-text hero-section__text hero-section__text--lg" style="color: #ffffff">
-          <p>
-            Louie Simmons was an influential figure in strength and conditioning, renowned for his
-            inventive training methodologies and decades-long career in powerlifting. Born in 1947,
-            he was best known as the founder of Westside Barbell, an exclusive, invitation-only
-            training facility in Columbus, Ohio.
-          </p>
+        <div
+          class="block-text hero-section__text hero-section__text--lg"
+          style={`color: ${textColor}`}
+        >
+          {description.map(paragraph => <p set:html={paragraph} />)}
 
-          <p>
-            Westside Barbell garnered a reputation as the "Mecca of Powerlifting," boasting several
-            world record holders among its members.
-          </p>
-          <ul>
-            <li style="color:white">
-              He competed in powerlifting for over three decades, achieving 'Elite' status in five
-              weight classes.
-            </li>
-            <li style="color:white">
-              Louie developed the
-              <a href="https://www.westside-barbell.com/pages/conjugate-method" style="color:white"
-                >Conjugate System</a
-              >, a revolutionary training methodology.
-            </li>
-            <li style="color:white">
-              His focus on injury prevention led to the invention of strength training equipment,
-              notably the Reverse Hyper machine.
-            </li>
-            <li style="color:white">
-              Sports teams, military and law enforcement, and athletes worldwide adopted his
-              training principles.
-            </li>
-          </ul>
+          {
+            listItems.length > 0 && (
+              <ul>
+                {listItems.map(item => (
+                  <li style={`color: ${textColor}`} set:html={item} />
+                ))}
+              </ul>
+            )
+          }
         </div>
 
-        <div class="hero-section__buttons">
-          <a
-            href="https://www.westside-barbell.com/blogs/the-blog/tagged/louie-simmons"
-            class="button primary"
-          >
-            Read Louie Simmons Articles
-          </a>
-        </div>
+        {
+          buttonText && buttonUrl && (
+            <div class="hero-section__buttons">
+              <a href={buttonUrl} class="button secondary">
+                {buttonText}
+              </a>
+            </div>
+          )
+        }
       </div>
     </div>
   </section>
@@ -231,12 +250,6 @@ import louieSquatHero from '@/assets/pages/Louie_Simmons_Squat_Hero.jpg'
       transition:
         background-color 0.25s ease-in,
         border-color 0.25s ease-in;
-      background: $primary-color;
-      border-color: $primary-color;
-
-      &.secondary {
-        background: #306cf4;
-      }
     }
   }
 

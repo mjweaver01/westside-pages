@@ -1,0 +1,82 @@
+---
+import ShopifyCarousel from './ShopifyCarousel.vue'
+import { fetchBlogPostsForCarousel } from '../utils/shopify'
+import type { CarouselSettings, CarouselItem } from '../types/shopify'
+
+export interface Props {
+  title?: string
+  backgroundColor?: string
+  addBoxShadow?: boolean
+  itemLimit?: number
+  shopLinkText?: string
+  primaryButton?: boolean
+  noTopPadding?: boolean
+  noBottomPadding?: boolean
+  blogHandle?: string
+  sortKey?: 'AUTHOR' | 'ID' | 'PUBLISHED_AT' | 'RELEVANCE' | 'TITLE' | 'UPDATED_AT'
+  reverse?: boolean
+  linkUrl?: string
+}
+
+const {
+  title = 'Latest Blog Posts',
+  backgroundColor = 'rgba(0,0,0,0)',
+  addBoxShadow = true,
+  itemLimit = 8,
+  shopLinkText = 'View All Posts',
+  primaryButton = true,
+  noTopPadding = false,
+  noBottomPadding = false,
+  blogHandle = 'news',
+  sortKey = 'PUBLISHED_AT',
+  reverse = true,
+  linkUrl = '/blogs/news',
+} = Astro.props
+
+const settings: CarouselSettings = {
+  title,
+  backgroundColor,
+  addBoxShadow,
+  itemLimit,
+  shopLinkText,
+  primaryButton,
+  noTopPadding,
+  noBottomPadding,
+}
+
+// Fetch blog posts from Shopify
+let blogPosts: CarouselItem[] = []
+try {
+  blogPosts = await fetchBlogPostsForCarousel({
+    blogHandle,
+    first: itemLimit,
+    sortKey,
+    reverse,
+  })
+} catch (error) {
+  console.error('Error fetching blog posts for carousel:', error)
+}
+---
+
+<!-- Only render if we have blog posts -->{
+  blogPosts.length > 0 && (
+    <ShopifyCarousel items={blogPosts} settings={settings} linkUrl={linkUrl} client:load />
+  )
+}
+
+<!-- Fallback if no blog posts -->
+{
+  blogPosts.length === 0 && (
+    <div class="carousel-fallback">
+      <p>Unable to load blog posts at this time.</p>
+    </div>
+  )
+}
+
+<style>
+  .carousel-fallback {
+    padding: 2rem;
+    text-align: center;
+    color: #666;
+  }
+</style>

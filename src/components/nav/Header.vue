@@ -12,7 +12,7 @@
         </div>
 
         <ul class="nav-links">
-          <li v-for="link in links" :key="link.text">
+          <li v-for="link in NAVIGATION_LINKS" :key="link.text">
             <a :href="link.url" class="nav-link" :class="{ active: isLinkActive(link.url) }">{{
               link.text
             }}</a>
@@ -49,7 +49,7 @@
 <script setup lang="ts">
   import { ref, onMounted, onUnmounted, computed } from 'vue'
   import HamburgerMenu from './HamburgerMenu.vue'
-  import { links } from '@/utils/links'
+  import { NAVIGATION_LINKS } from '@/utils/constants'
 
   interface Props {
     invertHeader?: boolean
