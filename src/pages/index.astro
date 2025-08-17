@@ -3,6 +3,12 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 import WSBB from '@/components/WSBB.astro'
 ---
 
-<BaseLayout title="Home - Westside Barbell" description="The world's strongest training facility">
-  <WSBB />
+<BaseLayout
+  title="Home - Westside Barbell"
+  description="The world's strongest training facility"
+  invertHeader={true}
+>
+  <div class="page homepage">
+    <WSBB />
+  </div>
 </BaseLayout>
