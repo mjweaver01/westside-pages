@@ -7,7 +7,7 @@
       <nav class="header-nav">
         <div class="logo">
           <a href="/">
-            <img src="/logo.png" alt="Westside Barbell" />
+            <img src="/logo.png" alt="Westside Barbell" width="40" height="40" />
           </a>
         </div>
 
