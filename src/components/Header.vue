@@ -1,5 +1,8 @@
 <template>
-  <header class="site-header" :class="{ 'invert-header': invertHeader, 'menu-open': isMenuOpen }">
+  <header
+    class="site-header"
+    :class="{ 'invert-header': invertHeader, 'menu-open': isMenuOpen, sticky: isSticky }"
+  >
     <div class="max-width">
       <nav class="header-nav">
         <div class="logo">
@@ -44,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { ref, onMounted, onUnmounted, computed } from 'vue'
   import HamburgerMenu from './HamburgerMenu.vue'
   import { links } from '@/utils/links'
 
@@ -59,6 +62,7 @@
   })
 
   const isMenuOpen = ref(false)
+  const isSticky = ref(false)
 
   const toggleMenu = () => {
     isMenuOpen.value = !isMenuOpen.value
@@ -71,6 +75,26 @@
   const isLinkActive = (linkUrl: string) => {
     return props.currentPath === linkUrl
   }
+
+  // @NOTE in BaseLayout.astro, we set the heights explicitly
+  const headerHeight = computed(() => {
+    return document.querySelector('.site-header')?.clientHeight
+  })
+
+  const handleScroll = () => {
+    // Set sticky state based on scroll position
+    isSticky.value = window.scrollY > (headerHeight?.value ?? 5)
+  }
+
+  onMounted(() => {
+    window.addEventListener('scroll', handleScroll)
+    // Check initial scroll position
+    handleScroll()
+  })
+
+  onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
+  })
 </script>
 
 <style lang="scss" scoped>
@@ -79,10 +103,11 @@
 
   .site-header {
     background: $white;
-    position: fixed !important;
+    position: absolute !important;
     top: 0;
     z-index: 999;
     width: 100%;
+    transition: background-color 0.3s ease;
   }
 
   // Hide header in iframe mode
@@ -138,6 +163,7 @@
 
   .hamburger-menu {
     display: block;
+    margin-right: -0.75rem;
 
     @media (min-width: $tablet) {
       display: none;
@@ -149,7 +175,6 @@
     flex-direction: column;
     gap: 1rem;
     padding: 1rem 0;
-    border-top: 1px solid $light-gray;
 
     @media (min-width: $tablet) {
       display: none;
@@ -168,7 +193,8 @@
     }
   }
 
-  .invert-header:not(.menu-open) {
+  .invert-header {
+    background: transparent;
     box-shadow: none;
 
     .logo img {
@@ -193,6 +219,6 @@
   }
 
   .invert-header.menu-open {
-    background: $white;
+    background: $black;
   }
 </style>
