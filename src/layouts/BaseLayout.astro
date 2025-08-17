@@ -126,7 +126,7 @@ const isIframeMode = Astro.url.searchParams.get('iframe') === 'true'
 
   // hide klaviyo popups
   [data-testid='animated-teaser'],
-  #kins-kins-popup {
+  [aria-label='POPUP Form'] {
     display: none !important;
   }
 </style>
