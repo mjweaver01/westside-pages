@@ -348,12 +348,19 @@ import louieSquatHero from '@/assets/pages/Louie_Simmons_Squat_Hero.jpg'
   // Smart iframe mode fix - prevent vh feedback loops while preserving responsive design
   :global(body.iframe-mode) {
     .hero-section {
-      max-height: 700px;
+      height: 55vw;
+      min-height: 700px;
     }
 
-    @media screen and (min-width: $tablet) {
+    @media screen and (min-width: $mobile) {
       .hero-section {
-        max-height: 1250px;
+        height: 100vw;
+      }
+    }
+
+    @media screen and (min-width: $desktop) {
+      .hero-section {
+        max-height: 1280px;
       }
     }
   }
