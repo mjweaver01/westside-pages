@@ -64,7 +64,7 @@
 
   .site-header {
     background: $white;
-    position: sticky !important;
+    position: fixed !important;
     top: 0;
     z-index: 999;
     width: 100%;

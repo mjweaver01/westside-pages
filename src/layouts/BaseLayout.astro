@@ -52,6 +52,11 @@ const {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    padding-top: 59px;
+
+    @media (min-width: $desktop) {
+      padding-top: 85px;
+    }
 
     main {
       flex: 1;
@@ -61,6 +66,7 @@ const {
   // Iframe mode styles
   #app.iframe-mode {
     min-height: auto;
+    padding-top: 0;
 
     main {
       margin: 0;
