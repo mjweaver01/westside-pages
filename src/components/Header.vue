@@ -10,7 +10,9 @@
 
         <ul class="nav-links">
           <li v-for="link in links" :key="link.text">
-            <a :href="link.url" class="nav-link">{{ link.text }}</a>
+            <a :href="link.url" class="nav-link" :class="{ active: isLinkActive(link.url) }">{{
+              link.text
+            }}</a>
           </li>
         </ul>
 
@@ -20,8 +22,22 @@
       </nav>
 
       <div v-if="isMenuOpen" class="mobile-menu">
-        <a href="/" @click="closeMenu" class="mobile-nav-link">Home</a>
-        <a href="/about" @click="closeMenu" class="mobile-nav-link">About</a>
+        <a
+          href="/"
+          @click="closeMenu"
+          class="mobile-nav-link"
+          :class="{ active: isLinkActive('/') }"
+          >Home</a
+        >
+        <a
+          v-for="link in links"
+          :key="link.text"
+          :href="link.url"
+          @click="closeMenu"
+          class="mobile-nav-link"
+          :class="{ active: isLinkActive(link.url) }"
+          >{{ link.text }}</a
+        >
       </div>
     </div>
   </header>
@@ -34,10 +50,12 @@
 
   interface Props {
     invertHeader?: boolean
+    currentPath?: string
   }
 
   const props = withDefaults(defineProps<Props>(), {
     invertHeader: false,
+    currentPath: '/',
   })
 
   const isMenuOpen = ref(false)
@@ -48,6 +66,10 @@
 
   const closeMenu = () => {
     isMenuOpen.value = false
+  }
+
+  const isLinkActive = (linkUrl: string) => {
+    return props.currentPath === linkUrl
   }
 </script>
 
@@ -108,7 +130,8 @@
     font-weight: 500;
     transition: color 0.25s;
 
-    &:hover {
+    &:hover,
+    &.active {
       color: $primary-color;
     }
   }
@@ -139,7 +162,8 @@
     font-weight: 500;
     padding: 0.5rem 0;
 
-    &:hover {
+    &:hover,
+    &.active {
       color: $primary-color;
     }
   }
@@ -155,7 +179,8 @@
     :deep(a) {
       color: $white;
 
-      &:hover {
+      &:hover,
+      &.active {
         color: $primary-color;
       }
     }
