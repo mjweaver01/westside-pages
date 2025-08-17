@@ -1,16 +1,19 @@
 ---
 import { Image } from 'astro:assets'
+import definedByImage from '@/assets/pages/Rectangle_95.png'
 ---
 
 <section class="shopify-section defined-by">
   <div class="defined-by">
     <Image
       class="defined-by-image"
-      src="/pages/Rectangle_95.png"
+      src={definedByImage}
       alt="Record Board"
       style="width: 100%; height: 100%; object-fit: cover;"
       width={1920}
       height={1080}
+      layout="constrained"
+      fit="cover"
     />
 
     <div class="block max-width row-right">

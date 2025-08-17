@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets'
+import type { ImageMetadata } from 'astro'
 
 // Reusable Accordion component
 interface AccordionItem {
@@ -16,7 +17,7 @@ interface HeadingBlock {
   type: 'heading'
   heading: string
   titleSize?: 'md' | 'lg'
-  icon?: string
+  icon?: string | ImageMetadata
 }
 
 type Block = AccordionItem | HeadingBlock
@@ -59,7 +60,18 @@ function processHeading(heading: string): string {
           >
             {block.icon && (
               <div class="block-title__icon">
-                <Image src={block.icon} alt="" width={100} height={100} />
+                {typeof block.icon === 'string' ? (
+                  <img src={block.icon} alt="" width="100" height="100" />
+                ) : (
+                  <Image
+                    src={block.icon}
+                    alt=""
+                    width={100}
+                    height={100}
+                    layout="constrained"
+                    fit="contain"
+                  />
+                )}
               </div>
             )}
             <Fragment set:html={processHeading(block.heading)} />

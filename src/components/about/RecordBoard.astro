@@ -1,16 +1,19 @@
 ---
 import { Image } from 'astro:assets'
+import recordBoardImage from '@/assets/pages/Rectangle_109.png'
 ---
 
 <section class="shopify-section record-board">
   <div class="record-board-wrapper">
     <Image
       class="record-board-image"
-      src="/pages/Rectangle_109.png"
+      src={recordBoardImage}
       alt="Record Board"
       style="width: 100%; height: 100%; object-fit: cover;"
       width={1920}
       height={1080}
+      layout="constrained"
+      fit="cover"
     />
 
     <div class="max-width record-board-description">

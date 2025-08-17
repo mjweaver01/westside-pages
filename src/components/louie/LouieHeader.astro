@@ -1,22 +1,29 @@
 ---
 import { Image } from 'astro:assets'
+import louieSquatHero from '@/assets/pages/Louie_Simmons_Squat_Hero.jpg'
 ---
 
 <section class="shopify-section index-hero index-hero--new">
   <section class="hero-section" style="background-color: rgba(0,0,0,0)">
     <Image
-      src="/pages/Louie_Simmons_Squat_Hero.jpg"
+      src={louieSquatHero}
       alt="Louie Simmons"
       width={2000}
       height={1332.9999999999998}
       class="hero-section__image hero-section__image--mobile"
+      layout="constrained"
+      fit="cover"
+      priority
     />
     <Image
-      src="/pages/Louie_Simmons_Squat_Hero.jpg"
+      src={louieSquatHero}
       alt="Louie Simmons"
       width={2000}
       height={1332.9999999999998}
       class="hero-section__image hero-section__image--desktop"
+      layout="constrained"
+      fit="cover"
+      priority
     />
 
     <div class="hero-section__container">

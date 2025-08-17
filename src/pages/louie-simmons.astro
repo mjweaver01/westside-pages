@@ -10,6 +10,17 @@ import ImageSlider from '@/components/ImageSlider.vue'
 import HorizontalAccordion from '@/components/HorizontalAccordion.astro'
 import HorizontalTabs from '@/components/HorizontalTabs.vue'
 import BookInfo from '@/components/BookInfo.astro'
+
+// Import all the louie images
+import louieAndChuck from '@/assets/pages/louie/Louie_Simmons_and_Chuck_Vogelpoh.jpg'
+import louieAndWestside from '@/assets/pages/louie/Louie_Simmons_and_Westside_Barbe.jpg'
+import louieBenchPress from '@/assets/pages/louie/Louie_Simmons_Bench_Press.jpg'
+import louieDeadliftVintage from '@/assets/pages/louie/Louie_Simmons_Deadlift_Vintage.jpg'
+import louieLiftingBarbell from '@/assets/pages/louie/Louie_Simmons_Lifting_Barbell_at.jpg'
+import louiePushingCar from '@/assets/pages/louie/Louie_Simmons_Pushing_Car_in-Whi.jpg'
+import louieSquatVintage from '@/assets/pages/louie/Louie_Simmons_Squat_Vintage_Powe.jpg'
+import louieSquatting from '@/assets/pages/louie/Louie_Simmons_Squatting.jpg'
+import louieScoutHyper from '@/assets/pages/louie/LouieSimmonsScouthyper.jpg'
 ---
 
 <BaseLayout
@@ -34,39 +45,39 @@ import BookInfo from '@/components/BookInfo.astro'
       }}
       images={[
         {
-          src: '/pages/louie/Louie_Simmons_and_Chuck_Vogelpoh.jpg',
+          src: louieAndChuck.src,
           alt: 'Louie Simmons and Chuck Vogelpoh',
         },
         {
-          src: '/pages/louie/Louie_Simmons_and_Westside_Barbe.jpg',
+          src: louieAndWestside.src,
           alt: 'Louie Simmons and Westside Barbell',
         },
         {
-          src: '/pages/louie/Louie_Simmons_Bench_Press.jpg',
+          src: louieBenchPress.src,
           alt: 'Louie Simmons Bench Press',
         },
         {
-          src: '/pages/louie/Louie_Simmons_Deadlift_Vintage.jpg',
+          src: louieDeadliftVintage.src,
           alt: 'Louie Simmons Deadlift Vintage',
         },
         {
-          src: '/pages/louie/Louie_Simmons_Lifting_Barbell_at.jpg',
+          src: louieLiftingBarbell.src,
           alt: 'Louie Simmons Lifting Barbell',
         },
         {
-          src: '/pages/louie/Louie_Simmons_Pushing_Car_in-Whi.jpg',
+          src: louiePushingCar.src,
           alt: 'Louie Simmons Pushing Car',
         },
         {
-          src: '/pages/louie/Louie_Simmons_Squat_Vintage_Powe.jpg',
+          src: louieSquatVintage.src,
           alt: 'Louie Simmons Vintage Powerlifting',
         },
         {
-          src: '/pages/louie/Louie_Simmons_Squatting.jpg',
+          src: louieSquatting.src,
           alt: 'Louie Simmons Squatting',
         },
         {
-          src: '/pages/louie/LouieSimmonsScouthyper.jpg',
+          src: louieScoutHyper.src,
           alt: 'Louie Simmons with Scout Hyper',
         },
       ]}

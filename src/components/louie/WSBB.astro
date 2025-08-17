@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets'
+import westsideLogo from '@/assets/pages/Logo_5.png'
 ---
 
 <section class="two-column" style="background-color: #ffffff">
@@ -10,11 +11,13 @@ import { Image } from 'astro:assets'
 
   <div class="max-width max-width--paddings two-column__content" style="max-width: 1360px;">
     <Image
-      src="/pages/Logo_5.png"
+      src={westsideLogo}
       alt="Westside Barbell Logo"
       width={1348}
       height={337}
       class="section__container-image"
+      layout="constrained"
+      fit="contain"
     />
 
     <div class="two-column__grid">

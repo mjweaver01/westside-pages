@@ -1,5 +1,9 @@
 ---
 import { Image } from 'astro:assets'
+import storyOfImage from '@/assets/pages/Group_175_1.png'
+import westsideHeader from '@/assets/pages/Group_175.png'
+import louieSimmons from '@/assets/pages/Rectangle_105.png'
+import trainingMethods from '@/assets/pages/Rectangle_106.png'
 ---
 
 <section class="shopify-section the-story">
@@ -8,11 +12,13 @@ import { Image } from 'astro:assets'
       <div class="story-of">
         <Image
           class="story-of-image"
-          src="/pages/Group_175_1.png"
+          src={storyOfImage}
           alt="Record Board"
           style="width: 100%; height: 100%; object-fit: cover;"
           width={1236}
           height={36}
+          layout="constrained"
+          fit="cover"
         />
 
         <div class="story-of-text center-text">
@@ -23,11 +29,13 @@ import { Image } from 'astro:assets'
       <div class="westside-header">
         <Image
           class="westside-header-image"
-          src="/pages/Group_175.png"
+          src={westsideHeader}
           alt="Westside Banner"
           style="width: 100%; height: 100%; object-fit: cover;"
           width={1300}
           height={170}
+          layout="constrained"
+          fit="cover"
         />
 
         <div class="westside-header-text center-text">
@@ -41,11 +49,13 @@ import { Image } from 'astro:assets'
             <div class="person-image">
               <Image
                 class="person-image-img"
-                src="/pages/Rectangle_105.png"
+                src={louieSimmons}
                 alt="Louie Simmons"
                 style="width: 100%; height: auto;"
                 width={583}
                 height={1080}
+                layout="constrained"
+                fit="cover"
               />
             </div>
           </div>
@@ -75,11 +85,13 @@ import { Image } from 'astro:assets'
             <div class="person-image">
               <Image
                 class="person-image-img"
-                src="/pages/Rectangle_106.png"
+                src={trainingMethods}
                 alt="Training Methods"
                 style="width: 100%; height: auto; margin-bottom: -1em;"
                 width={583}
                 height={1080}
+                layout="constrained"
+                fit="cover"
               />
             </div>
           </div>

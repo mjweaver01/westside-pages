@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets'
+import louieBackground from '@/assets/pages/DSC1046_LouieSimmons_1200x1200_8.jpg'
 ---
 
 <section class="shopify-section">
@@ -20,20 +21,24 @@ import { Image } from 'astro:assets'
         <div class="image-info__grid-item image-info__media">
           <Image
             class="mobile-image is-hidden-desktop-only"
-            src="/pages/DSC1046_LouieSimmons_1200x1200_8.jpg"
+            src={louieBackground}
             alt="Louie Simmons"
             width={1200}
             height={1200}
             style="border-radius: 16px"
+            layout="constrained"
+            fit="cover"
           />
 
           <Image
             class="is-hidden-mobile-only desktop-image"
-            src="/pages/DSC1046_LouieSimmons_1200x1200_8.jpg"
+            src={louieBackground}
             alt="Louie Simmons"
             width={1242}
             height={2208}
             style="border-radius: 16px"
+            layout="constrained"
+            fit="cover"
           />
         </div>
 

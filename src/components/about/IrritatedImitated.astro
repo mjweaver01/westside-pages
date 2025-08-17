@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets'
+import westsideLogoSmall from '@/assets/pages/Group_3.png'
 ---
 
 <section id="html-grid-custom-html-grid" class="custom-html-grid">
@@ -10,10 +11,12 @@ import { Image } from 'astro:assets'
           <div class="column-12">
             <p>
               <Image
-                src="/pages/Group_3.png"
+                src={westsideLogoSmall}
                 alt="Westside Barbell Logo"
                 width={204}
                 height={154}
+                layout="constrained"
+                fit="contain"
               />
             </p>
             <br />

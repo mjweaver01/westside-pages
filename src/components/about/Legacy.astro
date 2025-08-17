@@ -1,5 +1,7 @@
 ---
 import { Image } from 'astro:assets'
+import legacyHeroDesktop from '@/assets/pages/Hero_BG-squat_1_1_1.png'
+import legacyHeroMobile from '@/assets/pages/Hero_BG-squat_1_1_1_800x.png'
 ---
 
 <section id="hero-section" class="hero-section">
@@ -7,18 +9,26 @@ import { Image } from 'astro:assets'
     id="hero-image-desktop"
     class="hero-image desktop"
     alt="Westside Barbell Hero"
-    src="/pages/Hero_BG-squat_1_1_1.png"
+    src={legacyHeroDesktop}
     width={1920}
     height={1080}
+    layout="constrained"
+    fit="cover"
+    position="top"
+    priority
   />
 
   <Image
     id="hero-image-mobile"
     class="hero-image mobile"
     alt="Westside Barbell Hero"
-    src="/pages/Hero_BG-squat_1_1_1_800x.png"
+    src={legacyHeroMobile}
     width={800}
     height={450}
+    layout="constrained"
+    fit="cover"
+    position="top"
+    priority
   />
 
   <div class="container">

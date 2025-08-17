@@ -8,6 +8,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 // https://astro.build/config
 export default defineConfig({
   integrations: [vue()],
+  image: {
+    responsiveStyles: true,
+    layout: 'constrained',
+  },
   vite: {
     resolve: {
       alias: {
