@@ -33,7 +33,7 @@
           >Home</a
         >
         <a
-          v-for="link in links"
+          v-for="link in NAVIGATION_LINKS"
           :key="link.text"
           :href="link.url"
           @click="closeMenu"
