@@ -344,4 +344,17 @@ import louieSquatHero from '@/assets/pages/Louie_Simmons_Squat_Hero.jpg'
       height: calc(100vh - 185px);
     }
   }
+
+  // Smart iframe mode fix - prevent vh feedback loops while preserving responsive design
+  :global(body.iframe-mode) {
+    .hero-section {
+      max-height: 700px;
+    }
+
+    @media screen and (min-width: $tablet) {
+      .hero-section {
+        max-height: 1250px;
+      }
+    }
+  }
 </style>
