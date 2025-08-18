@@ -42,7 +42,7 @@
           >
             <!-- Product Layout -->
             <template v-if="item.type === 'product'">
-              <a class="product-image-wrapper" :href="item.url">
+              <a class="product-image-wrapper" :href="itemUrl(item.url)">
                 <img
                   class="product-image lazyload blur-up"
                   :src="item.image?.src || placeholderImage"
@@ -51,7 +51,7 @@
                 />
               </a>
               <div class="product-info">
-                <a :href="item.url">
+                <a :href="itemUrl(item.url)">
                   <h5>{{ item.title }}</h5>
                 </a>
                 <div class="price-wrapper" v-if="item.price">
@@ -68,7 +68,7 @@
             <template v-else-if="item.type === 'blog'">
               <div class="blog-article">
                 <div class="article-image">
-                  <a :href="item.url">
+                  <a :href="itemUrl(item.url)">
                     <img
                       class="product-image lazyload blur-up"
                       :src="item.image?.src || placeholderImage"
@@ -85,20 +85,21 @@
                 <p v-if="item.tags && item.tags.length > 0">
                   <span v-for="(tag, index) in item.tags" :key="tag" class="tags">
                     <span v-if="index > 0">&nbsp;|&nbsp;</span>
-                    <a :href="`/blogs/the-blog/tagged/${tag.toLowerCase().replace(/\s+/g, '-')}`">
+                    <a :href="taggedUrl(tag)">
                       {{ tag }}
                     </a>
                   </span>
                 </p>
 
                 <h3>
-                  <a :href="item.url">
+                  <a :href="itemUrl(item.url)">
                     {{ item.title }}
                   </a>
                 </h3>
 
                 <p v-if="item.excerpt">
-                  {{ truncateText(item.excerpt, 200) }} <a :href="item.url">Read more</a>
+                  {{ truncateText(item.excerpt, 200) }}
+                  <a :href="itemUrl(item.url)">Read more</a>
                 </p>
 
                 <p class="posted-by">
@@ -211,8 +212,12 @@
     </div>
 
     <!-- Shop/View All link button -->
-    <div v-if="settings.shopLinkText" class="all-button m-fr-href">
-      <a :href="linkUrl" :class="`button${!settings.primaryButton ? ' secondary' : ''}`">
+    <div class="all-button m-fr-href">
+      <a
+        v-if="settings.shopLinkText"
+        :href="itemUrl(linkUrl)"
+        :class="`button${!settings.primaryButton ? ' secondary' : ''}`"
+      >
         {{ settings.shopLinkText }}
       </a>
     </div>
@@ -279,6 +284,16 @@
   const isBlogLayout = computed(() => {
     return displayItems.value[0]?.type === 'blog'
   })
+
+  const siteUrl = 'https://www.westside-barbell.com'
+
+  const itemUrl = (url: string) => {
+    return `${siteUrl}${url}`
+  }
+
+  const taggedUrl = (tag: string) => {
+    return `${siteUrl}/blogs/the-blog/tagged/${tag.toLowerCase().replace(/\s+/g, '-')}`
+  }
 
   // Helper functions
   const truncateText = (text: string, maxLength: number): string => {
@@ -502,6 +517,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: 1;
   }
 
   // Ensure consistent card heights
