@@ -682,7 +682,7 @@
   }
 
   .swiper-pagination {
-    padding-bottom: 1.25em;
+    padding-bottom: 1em;
     margin: 0;
   }
 
