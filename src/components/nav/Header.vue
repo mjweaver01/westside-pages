@@ -63,6 +63,9 @@
 
   const isMenuOpen = ref(false)
   const isSticky = ref(false)
+  const currentPath = ref(
+    props.currentPath || (typeof window !== 'undefined' ? window.location.pathname : '/')
+  )
 
   const toggleMenu = () => {
     isMenuOpen.value = !isMenuOpen.value
@@ -73,7 +76,7 @@
   }
 
   const isLinkActive = (linkUrl: string) => {
-    return props.currentPath === linkUrl
+    return currentPath.value === linkUrl
   }
 
   // @NOTE in BaseLayout.astro, we set the heights explicitly
@@ -86,10 +89,16 @@
     isSticky.value = window.scrollY > (headerHeight?.value ?? 5)
   }
 
+  const updateCurrentPath = () => {
+    if (typeof window !== 'undefined') {
+      currentPath.value = window.location.pathname
+    }
+  }
+
   onMounted(() => {
-    window.addEventListener('scroll', handleScroll)
-    // Check initial scroll position
+    window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
+    updateCurrentPath()
   })
 
   onUnmounted(() => {

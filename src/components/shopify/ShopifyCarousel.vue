@@ -23,9 +23,16 @@
         :class="{
           'no-top-padding': settings.noTopPadding,
           'no-bottom-padding': settings.noBottomPadding,
+          'swiper-loading': isLoading,
         }"
       >
-        <div class="swiper-wrapper">
+        <div
+          class="swiper-wrapper"
+          :class="{
+            'pre-swiper-grid': isLoading,
+            'blog-layout': isLoading && isBlogLayout,
+          }"
+        >
           <div
             v-for="item in displayItems"
             :key="item.id"
@@ -71,13 +78,6 @@
                       data-sizes="auto"
                       loading="lazy"
                     />
-                    <noscript>
-                      <img
-                        class="lazyloaded"
-                        :src="item.image?.src || placeholderImage"
-                        :alt="item.image?.alt || item.title"
-                      />
-                    </noscript>
                   </a>
                 </div>
 
@@ -263,12 +263,17 @@
   // Placeholder image
   const placeholderImage = '/placeholder-image.png'
 
-  // Swiper instance
+  // Swiper instance and loading state
   let swiperInstance: Swiper | null = null
+  const isLoading = ref(true)
 
   // Computed properties
   const displayItems = computed(() => {
     return props.items.slice(0, props.settings.itemLimit)
+  })
+
+  const isBlogLayout = computed(() => {
+    return displayItems.value[0]?.type === 'blog'
   })
 
   // Helper functions
@@ -373,6 +378,12 @@
     // Setup resize handling
     window.addEventListener('resize', resizeEventHandler)
     resizeEventHandler() // Initial call
+
+    // Remove loading state after Swiper is initialized with a small delay
+    // to ensure smooth transition from grid to swiper layout
+    setTimeout(() => {
+      isLoading.value = false
+    }, 100)
   }
 
   // Lifecycle
@@ -536,6 +547,122 @@
   }
 
   // Invert theme styling
+  // Pre-Swiper grid layout to prevent FOUC
+  .swiper-loading {
+    .pre-swiper-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+
+      // Hide all items beyond the first row for each breakpoint
+      .swiper-slide:nth-child(n + 2) {
+        display: none;
+      }
+
+      // Responsive grid layout - only show one row to match carousel behavior
+      @media (min-width: 550px) {
+        grid-template-columns: repeat(2, 1fr);
+
+        // Show first 2 items, hide the rest
+        .swiper-slide:nth-child(n + 2) {
+          display: block;
+        }
+        .swiper-slide:nth-child(n + 3) {
+          display: none;
+        }
+      }
+
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+
+        // Show first 3 items, hide the rest
+        .swiper-slide:nth-child(n + 3) {
+          display: block;
+        }
+        .swiper-slide:nth-child(n + 4) {
+          display: none;
+        }
+
+        // Blog layout uses 2 columns instead of 3 on tablets
+        &.blog-layout {
+          grid-template-columns: repeat(2, 1fr);
+
+          // Show first 2 items for blog layout
+          .swiper-slide:nth-child(n + 3) {
+            display: none;
+          }
+        }
+      }
+
+      @media (min-width: 1024px) {
+        grid-template-columns: repeat(4, 1fr);
+
+        // Show first 4 items, hide the rest
+        .swiper-slide:nth-child(n + 4) {
+          display: block;
+        }
+        .swiper-slide:nth-child(n + 5) {
+          display: none;
+        }
+
+        // Blog layout uses 3 columns instead of 4 on desktop
+        &.blog-layout {
+          grid-template-columns: repeat(3, 1fr);
+
+          // Show first 3 items for blog layout
+          .swiper-slide:nth-child(n + 4) {
+            display: none;
+          }
+        }
+      }
+
+      @media (min-width: 1440px) {
+        grid-template-columns: repeat(4, 1fr);
+
+        // Show first 4 items, hide the rest
+        .swiper-slide:nth-child(n + 4) {
+          display: block;
+        }
+        .swiper-slide:nth-child(n + 5) {
+          display: none;
+        }
+
+        // Blog layout maintains 3 columns on large screens
+        &.blog-layout {
+          grid-template-columns: repeat(3, 1fr);
+
+          // Show first 3 items for blog layout
+          .swiper-slide:nth-child(n + 4) {
+            display: none;
+          }
+        }
+      }
+    }
+
+    // Hide navigation and pagination during loading
+    .swiper-button-next,
+    .swiper-button-prev,
+    .swiper-pagination {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+  }
+
+  // Smooth transition when Swiper takes over
+  .swiper-wrapper {
+    transition: all 0.3s ease;
+  }
+
+  // Show navigation and pagination after Swiper is loaded
+  .swiper:not(.swiper-loading) {
+    .swiper-button-next,
+    .swiper-button-prev,
+    .swiper-pagination {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
   .invert-theme {
     .title h2 {
       color: white !important;
