@@ -666,7 +666,7 @@
   }
 
   .swiper-pagination {
-    padding-bottom: 1em;
+    padding-bottom: 0.5em;
   }
 
   // Show navigation and pagination after Swiper is loaded
