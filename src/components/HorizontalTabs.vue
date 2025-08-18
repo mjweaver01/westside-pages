@@ -156,7 +156,15 @@
     maxWidth: 1360,
   })
 
-  const componentId = ref(`horizontal-tabs-${Math.random().toString(36).substring(2, 11)}`)
+  // Use sectionId if provided, otherwise create a deterministic ID based on props
+  const componentId = ref(
+    props.sectionId
+      ? `horizontal-tabs-${props.sectionId}`
+      : `horizontal-tabs-${JSON.stringify(props.titles)
+          .slice(0, 10)
+          .replace(/[^a-z0-9]/gi, '')
+          .toLowerCase()}`
+  )
 
   const activeTab = ref(2)
 
