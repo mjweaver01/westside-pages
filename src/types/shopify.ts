@@ -106,6 +106,7 @@ export interface CarouselItem {
   excerpt?: string
   date?: string
   author?: string
+  tags?: string[]
   type: 'product' | 'blog'
 }
 
@@ -118,6 +119,8 @@ export interface CarouselSettings {
   primaryButton?: boolean
   noTopPadding?: boolean
   noBottomPadding?: boolean
+  invert?: boolean
+  infinite?: boolean
 }
 
 // Shopify Storefront API Configuration

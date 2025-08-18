@@ -16,6 +16,8 @@ export interface Props {
   sortKey?: 'AUTHOR' | 'ID' | 'PUBLISHED_AT' | 'RELEVANCE' | 'TITLE' | 'UPDATED_AT'
   reverse?: boolean
   linkUrl?: string
+  invert?: boolean
+  infinite?: boolean
 }
 
 const {
@@ -31,17 +33,21 @@ const {
   sortKey = 'PUBLISHED_AT',
   reverse = true,
   linkUrl = '/blogs/news',
+  invert = false,
+  infinite = false,
 } = Astro.props
 
 const settings: CarouselSettings = {
   title,
-  backgroundColor,
+  backgroundColor: invert ? '#306cf4' : backgroundColor,
   addBoxShadow,
   itemLimit,
   shopLinkText,
   primaryButton,
   noTopPadding,
   noBottomPadding,
+  invert,
+  infinite,
 }
 
 // Fetch blog posts from Shopify

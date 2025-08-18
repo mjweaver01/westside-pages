@@ -10,9 +10,9 @@ import { PRODUCTS_QUERY, BLOG_POSTS_QUERY } from '@/utils/constants'
 
 // Default Shopify configuration - should be set via environment variables
 const defaultConfig: ShopifyConfig = {
-  domain: process.env.PUBLIC_SHOPIFY_DOMAIN || '',
-  storefrontAccessToken: process.env.PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN || '',
-  apiVersion: '2024-01',
+  domain: import.meta.env.SHOPIFY_DOMAIN || '',
+  storefrontAccessToken: import.meta.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN || '',
+  apiVersion: '2025-01',
 }
 
 /**
@@ -168,7 +168,8 @@ export function blogPostToCarouselItem(post: ShopifyBlogPost): CarouselItem {
       : undefined,
     excerpt: post.excerpt || undefined,
     date: post.publishedAt,
-    author: post.author.displayName || `${post.author.firstName} ${post.author.lastName}`.trim(),
+    author: `${post.author.firstName || ''} ${post.author.lastName || ''}`.trim() || 'Anonymous',
+    tags: post.tags || [],
     type: 'blog',
   }
 }

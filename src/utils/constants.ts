@@ -115,7 +115,6 @@ export const BLOG_POSTS_QUERY = `
             author {
               firstName
               lastName
-              displayName
             }
             blog {
               id

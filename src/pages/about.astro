@@ -6,6 +6,7 @@ import DefinedBy from '@/components/about/DefinedBy.astro'
 import Story from '@/components/about/Story.astro'
 import RecordBoard from '@/components/about/RecordBoard.astro'
 import EmailSignup from '@/components/EmailSignup.astro'
+import ShopifyBlogCarousel from '@/components/shopify/ShopifyBlogCarousel.astro'
 ---
 
 <BaseLayout
@@ -19,6 +20,18 @@ import EmailSignup from '@/components/EmailSignup.astro'
     <DefinedBy />
     <Story />
     <RecordBoard />
+    <ShopifyBlogCarousel
+      title="Knowledge"
+      blogHandle="the-blog"
+      itemLimit={6}
+      sortKey="PUBLISHED_AT"
+      reverse={true}
+      shopLinkText="View All"
+      linkUrl="/blogs/the-blog"
+      addBoxShadow={false}
+      invert={true}
+      infinite={true}
+    />
     <EmailSignup />
   </div>
 </BaseLayout>

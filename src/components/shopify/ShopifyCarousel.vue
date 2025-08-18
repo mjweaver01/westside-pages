@@ -5,6 +5,7 @@
     :class="{
       'no-top-padding': settings.noTopPadding,
       'no-bottom-padding': settings.noBottomPadding,
+      'invert-theme': settings.invert,
     }"
     :data-limit="settings.itemLimit"
   >
@@ -57,25 +58,52 @@
 
             <!-- Blog Layout -->
             <template v-else-if="item.type === 'blog'">
-              <a class="product-image-wrapper blog-image-wrapper" :href="item.url">
-                <img
-                  class="product-image lazyload blur-up"
-                  :src="item.image?.src || placeholderImage"
-                  :alt="item.image?.alt || item.title"
-                  loading="lazy"
-                />
-              </a>
-              <div class="product-info blog-info">
-                <a :href="item.url">
-                  <h5>{{ item.title }}</h5>
-                </a>
-                <p v-if="item.excerpt" class="blog-excerpt">
-                  {{ truncateText(item.excerpt, 100) }}
-                </p>
-                <div class="blog-meta">
-                  <span v-if="item.author" class="blog-author">By {{ item.author }}</span>
-                  <span v-if="item.date" class="blog-date">{{ formatDate(item.date) }}</span>
+              <div class="blog-article">
+                <div class="article-image">
+                  <a :href="item.url">
+                    <img
+                      class="product-image lazyload blur-up"
+                      :src="item.image?.src || placeholderImage"
+                      :alt="item.image?.alt || item.title"
+                      :data-src="item.image?.src || placeholderImage"
+                      data-widths="[360, 540, 720, 900, 1080, 1600]"
+                      :data-aspectratio="item.image?.aspectRatio || '1.0'"
+                      data-sizes="auto"
+                      loading="lazy"
+                    />
+                    <noscript>
+                      <img
+                        class="lazyloaded"
+                        :src="item.image?.src || placeholderImage"
+                        :alt="item.image?.alt || item.title"
+                      />
+                    </noscript>
+                  </a>
                 </div>
+
+                <p v-if="item.tags && item.tags.length > 0">
+                  <span v-for="(tag, index) in item.tags" :key="tag" class="tags">
+                    <span v-if="index > 0">&nbsp;|&nbsp;</span>
+                    <a :href="`/blogs/the-blog/tagged/${tag.toLowerCase().replace(/\s+/g, '-')}`">
+                      {{ tag }}
+                    </a>
+                  </span>
+                </p>
+
+                <h3>
+                  <a :href="item.url">
+                    {{ item.title }}
+                  </a>
+                </h3>
+
+                <p v-if="item.excerpt">
+                  {{ truncateText(item.excerpt, 200) }} <a :href="item.url">Read more</a>
+                </p>
+
+                <br />
+                <p class="posted-by">
+                  By {{ item.author || 'WSBB' }} on {{ formatDate(item.date || '') }}
+                </p>
               </div>
             </template>
           </div>
@@ -83,7 +111,7 @@
       </div>
 
       <!-- Navigation buttons - Box Shadow Style -->
-      <div v-if="settings.addBoxShadow" :class="`swiper-button-next js-rc-n-${componentId}`">
+      <div v-if="settings.addBoxShadow" :class="`swiper-button-next js-sw-n-${componentId}`">
         <svg
           width="47"
           height="47"
@@ -97,16 +125,16 @@
             r="22.75"
             transform="rotate(-180 23.5 23.5)"
             fill="transparent"
-            stroke="#1D2024"
+            :stroke="settings.invert ? 'white' : '#1D2024'"
             stroke-width="1.5"
           />
           <path
             d="M33.5303 24.5303C33.8232 24.2374 33.8232 23.7626 33.5303 23.4697L28.7574 18.6967C28.4645 18.4038 27.9896 18.4038 27.6967 18.6967C27.4038 18.9896 27.4038 19.4645 27.6967 19.7574L31.9393 24L27.6967 28.2426C27.4038 28.5355 27.4038 29.0104 27.6967 29.3033C27.9896 29.5962 28.4645 29.5962 28.7574 29.3033L33.5303 24.5303ZM14 24.75L33 24.75L33 23.25L14 23.25L14 24.75Z"
-            fill="#1D2024"
+            :fill="settings.invert ? 'white' : '#1D2024'"
           />
         </svg>
       </div>
-      <div v-if="settings.addBoxShadow" :class="`swiper-button-prev js-rc-p-${componentId}`">
+      <div v-if="settings.addBoxShadow" :class="`swiper-button-prev js-sw-p-${componentId}`">
         <svg
           width="47"
           height="47"
@@ -119,18 +147,18 @@
             cy="23.5"
             r="22.75"
             fill="transparent"
-            stroke="#1D2024"
+            :stroke="settings.invert ? 'white' : '#1D2024'"
             stroke-width="1.5"
           />
           <path
             d="M13.4697 22.4697C13.1768 22.7626 13.1768 23.2374 13.4697 23.5303L18.2426 28.3033C18.5355 28.5962 19.0104 28.5962 19.3033 28.3033C19.5962 28.0104 19.5962 27.5355 19.3033 27.2426L15.0607 23L19.3033 18.7574C19.5962 18.4645 19.5962 17.9896 19.3033 17.6967C19.0104 17.4038 18.5355 17.4038 18.2426 17.6967L13.4697 22.4697ZM33 22.25L14 22.25L14 23.75L33 23.75L33 22.25Z"
-            fill="#1D2024"
+            :fill="settings.invert ? 'white' : '#1D2024'"
           />
         </svg>
       </div>
 
       <!-- Navigation buttons - Default Style -->
-      <div v-if="!settings.addBoxShadow" :class="`swiper-button-next js-rc-n-${componentId}`">
+      <div v-if="!settings.addBoxShadow" :class="`swiper-button-next js-sw-n-${componentId}`">
         <svg
           width="47"
           height="47"
@@ -143,17 +171,17 @@
             cy="23.5"
             r="22.75"
             transform="rotate(-180 23.5 23.5)"
-            fill="#1D2024"
-            stroke="white"
+            :fill="settings.invert ? 'transparent' : '#1D2024'"
+            :stroke="settings.invert ? 'white' : 'white'"
             stroke-width="1.5"
           />
           <path
             d="M33.5303 24.5303C33.8232 24.2374 33.8232 23.7626 33.5303 23.4697L28.7574 18.6967C28.4645 18.4038 27.9896 18.4038 27.6967 18.6967C27.4038 18.9896 27.4038 19.4645 27.6967 19.7574L31.9393 24L27.6967 28.2426C27.4038 28.5355 27.4038 29.0104 27.6967 29.3033C27.9896 29.5962 28.4645 29.5962 28.7574 29.3033L33.5303 24.5303ZM14 24.75L33 24.75L33 23.25L14 23.25L14 24.75Z"
-            fill="white"
+            :fill="settings.invert ? 'white' : 'white'"
           />
         </svg>
       </div>
-      <div v-if="!settings.addBoxShadow" :class="`swiper-button-prev js-rc-p-${componentId}`">
+      <div v-if="!settings.addBoxShadow" :class="`swiper-button-prev js-sw-p-${componentId}`">
         <svg
           width="47"
           height="47"
@@ -161,10 +189,17 @@
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <circle cx="23.5" cy="23.5" r="22.75" fill="#1D2024" stroke="white" stroke-width="1.5" />
+          <circle
+            cx="23.5"
+            cy="23.5"
+            r="22.75"
+            :fill="settings.invert ? 'transparent' : '#1D2024'"
+            :stroke="settings.invert ? 'white' : 'white'"
+            stroke-width="1.5"
+          />
           <path
             d="M13.4697 22.4697C13.1768 22.7626 13.1768 23.2374 13.4697 23.5303L18.2426 28.3033C18.5355 28.5962 19.0104 28.5962 19.3033 28.3033C19.5962 28.0104 19.5962 27.5355 19.3033 27.2426L15.0607 23L19.3033 18.7574C19.5962 18.4645 19.5962 17.9896 19.3033 17.6967C19.0104 17.4038 18.5355 17.4038 18.2426 17.6967L13.4697 22.4697ZM33 22.25L14 22.25L14 23.75L33 23.75L33 22.25Z"
-            fill="white"
+            :fill="settings.invert ? 'white' : 'white'"
           />
         </svg>
       </div>
@@ -176,7 +211,7 @@
     </div>
 
     <!-- Shop/View All link button -->
-    <div v-if="settings.shopLinkText" class="m-fr-href">
+    <div v-if="settings.shopLinkText" class="all-button m-fr-href">
       <a :href="linkUrl" :class="`button${!settings.primaryButton ? ' secondary' : ''}`">
         {{ settings.shopLinkText }}
       </a>
@@ -205,8 +240,25 @@
     linkUrl: '#',
   })
 
-  // Generate unique IDs for this component instance
-  const componentId = ref(`${Date.now()}-${Math.random().toString(36).substr(2, 9)}`)
+  // Generate consistent IDs based on component content to avoid hydration mismatch
+  const generateComponentId = () => {
+    // Create a simple hash based on the first item and settings
+    const firstItemTitle = props.items[0]?.title || 'default'
+    const titleStr = props.settings.title || 'notitle'
+    const combinedStr = `${firstItemTitle}-${titleStr}-${props.items.length}`
+
+    // Simple hash function
+    let hash = 0
+    for (let i = 0; i < combinedStr.length; i++) {
+      const char = combinedStr.charCodeAt(i)
+      hash = (hash << 5) - hash + char
+      hash = hash & hash // Convert to 32bit integer
+    }
+
+    return Math.abs(hash).toString(36)
+  }
+
+  const componentId = ref(`carousel-${generateComponentId()}`)
   const swiperId = computed(() => `shopify-carousel-${componentId.value}`)
 
   // Placeholder image
@@ -277,15 +329,18 @@
       swiperInstance = null
     }
 
+    const isBlog = displayItems.value[0]?.type === 'blog' || false
+
     swiperInstance = new Swiper(`#${swiperId.value}`, {
       modules: [Navigation, Pagination],
       slidesPerView: 1,
       autoHeight: false,
-      spaceBetween: 20,
+      spaceBetween: isBlog ? 16 : 20,
+      loop: props.settings.infinite || false,
 
       navigation: {
-        nextEl: `.js-rc-n-${componentId.value}`,
-        prevEl: `.js-rc-p-${componentId.value}`,
+        nextEl: `.js-sw-n-${componentId.value}`,
+        prevEl: `.js-sw-p-${componentId.value}`,
       },
 
       pagination: {
@@ -302,16 +357,16 @@
           spaceBetween: 20,
         },
         768: {
-          slidesPerView: 3,
+          slidesPerView: isBlog ? 2 : 3,
           spaceBetween: 20,
         },
         1024: {
-          slidesPerView: 4,
+          slidesPerView: isBlog ? 3 : 4,
           spaceBetween: 20,
         },
         1440: {
-          slidesPerView: 4,
-          spaceBetween: 40,
+          slidesPerView: isBlog ? 3 : 4,
+          spaceBetween: isBlog ? 20 : 40,
         },
       },
     })
@@ -404,6 +459,12 @@
     }
   }
 
+  .all-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   // Ensure consistent card heights
   .siema-product {
     display: flex;
@@ -421,6 +482,100 @@
       flex-direction: column;
       justify-content: space-between;
       padding: 12px 0;
+    }
+  }
+
+  // Blog article specific styling
+  .blog-article {
+    .article-image {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 15px;
+
+      a {
+        display: block;
+        width: 100%;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        display: block;
+        object-fit: cover;
+      }
+    }
+
+    // Add spacing between content elements
+    p {
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      margin: 10px 0;
+    }
+
+    .posted-by {
+      margin-top: 15px;
+    }
+
+    .tags {
+      display: inline;
+
+      a {
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  // Invert theme styling
+  .invert-theme {
+    .title h2 {
+      color: white !important;
+    }
+
+    .blog-article {
+      h3 a {
+        color: white !important;
+      }
+
+      p {
+        color: white !important;
+      }
+
+      .tags a {
+        color: white !important;
+      }
+
+      .posted-by {
+        color: white !important;
+      }
+    }
+
+    // Button styling for inverted theme
+    .button {
+      background-color: white !important;
+      color: #0b4ddb !important;
+      border: 1px solid white !important;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.9) !important;
+      }
+    }
+
+    // Pagination dots
+    .swiper-pagination-bullet {
+      background-color: white !important;
+      opacity: 0.5;
+
+      &.swiper-pagination-bullet-active {
+        opacity: 1;
+      }
     }
   }
 </style>
