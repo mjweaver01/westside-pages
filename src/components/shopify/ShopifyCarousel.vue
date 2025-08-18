@@ -323,6 +323,16 @@
     removeMinHeights(productInfos)
     addMinHeights(imageWrappers)
     addMinHeights(productInfos)
+
+    // Update Swiper instance after resize
+    if (swiperInstance && !swiperInstance.destroyed) {
+      // Use requestAnimationFrame to ensure DOM has updated
+      requestAnimationFrame(() => {
+        if (swiperInstance && !swiperInstance.destroyed) {
+          swiperInstance.update()
+        }
+      })
+    }
   }
 
   // Initialize Swiper
@@ -352,6 +362,10 @@
       touchAngle: 45,
       grabCursor: true,
       allowTouchMove: true,
+
+      // Auto-update when layout changes
+      observer: true,
+      observeParents: true,
 
       navigation: {
         nextEl: `.js-sw-n-${componentId.value}`,
@@ -390,10 +404,14 @@
     window.addEventListener('resize', resizeEventHandler)
     resizeEventHandler() // Initial call
 
-    // Remove loading state after Swiper is initialized with a small delay
-    // to ensure smooth transition from grid to swiper layout
+    // Remove loading state after Swiper is initialized
     setTimeout(() => {
       isLoading.value = false
+
+      // Force update to ensure proper sizing after layout settles
+      if (swiperInstance && !swiperInstance.destroyed) {
+        swiperInstance.update()
+      }
     }, 100)
   }
 
