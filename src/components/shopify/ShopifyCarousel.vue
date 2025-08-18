@@ -405,14 +405,10 @@
     resizeEventHandler() // Initial call
 
     // Remove loading state after Swiper is initialized
-    setTimeout(() => {
-      isLoading.value = false
-
-      // Force update to ensure proper sizing after layout settles
-      if (swiperInstance && !swiperInstance.destroyed) {
-        swiperInstance.update()
-      }
-    }, 100)
+    isLoading.value = false
+    if (swiperInstance && !swiperInstance.destroyed) {
+      swiperInstance.update()
+    }
   }
 
   // Lifecycle
@@ -603,6 +599,7 @@
 
       @media (min-width: 768px) {
         grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
 
         // Show first 3 items, hide the rest
         .swiper-slide:nth-child(n + 3) {
@@ -615,6 +612,7 @@
         // Blog layout uses 2 columns instead of 3 on tablets
         &.blog-layout {
           grid-template-columns: repeat(2, 1fr);
+          gap: 1.25em !important;
 
           // Show first 2 items for blog layout
           .swiper-slide:nth-child(n + 3) {
@@ -684,7 +682,8 @@
   }
 
   .swiper-pagination {
-    padding-bottom: 0.5em;
+    padding-bottom: 1.25em;
+    margin: 0;
   }
 
   // Show navigation and pagination after Swiper is loaded
