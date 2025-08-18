@@ -35,7 +35,7 @@ const { items, className = '' } = Astro.props
 
 <div class={`people ${className}`}>
   {
-    items.map((item, index) => {
+    items.map(item => {
       const isImageLeft = item.imagePosition === 'left' || item.imagePosition === undefined
       const rowClass = isImageLeft ? 'row' : 'row row-reverse'
       const contentArray = Array.isArray(item.content) ? item.content : [item.content]
