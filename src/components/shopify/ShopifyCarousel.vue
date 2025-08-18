@@ -18,6 +18,7 @@
       :class="{ 'swiper-has-shadow': settings.addBoxShadow }"
     >
       <div
+        ref="swiperContainer"
         :id="swiperId"
         class="recommendations product-list row swiper"
         :class="{
@@ -263,6 +264,9 @@
   // Placeholder image
   const placeholderImage = '/placeholder-image.png'
 
+  // Vue refs
+  const swiperContainer = ref<HTMLElement>()
+
   // Swiper instance and loading state
   let swiperInstance: Swiper | null = null
   const isLoading = ref(true)
@@ -308,11 +312,12 @@
   }
 
   const resizeEventHandler = () => {
-    const swiperEl = document.getElementById(swiperId.value)
-    if (!swiperEl) return
+    if (!swiperContainer.value) return
 
-    const imageWrappers = swiperEl.querySelectorAll('.siema-product .product-image-wrapper')
-    const productInfos = swiperEl.querySelectorAll('.siema-product .product-info')
+    const imageWrappers = swiperContainer.value.querySelectorAll(
+      '.siema-product .product-image-wrapper'
+    )
+    const productInfos = swiperContainer.value.querySelectorAll('.siema-product .product-info')
 
     removeMinHeights(imageWrappers)
     removeMinHeights(productInfos)
