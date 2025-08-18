@@ -686,17 +686,6 @@
       }
     }
 
-    // Button styling for inverted theme
-    .button {
-      background-color: white !important;
-      color: #0b4ddb !important;
-      border: 1px solid white !important;
-
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.9) !important;
-      }
-    }
-
     // Pagination dots
     .swiper-pagination-bullet {
       background-color: white !important;
