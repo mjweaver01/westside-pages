@@ -100,7 +100,6 @@
                   {{ truncateText(item.excerpt, 200) }} <a :href="item.url">Read more</a>
                 </p>
 
-                <br />
                 <p class="posted-by">
                   By {{ item.author || 'WSBB' }} on {{ formatDate(item.date || '') }}
                 </p>
@@ -390,6 +389,8 @@
 </script>
 
 <style lang="scss" scoped>
+  @use '@/scss/variables.scss' as *;
+
   .no-top-padding {
     padding-top: 0 !important;
   }
@@ -525,6 +526,7 @@
 
       a {
         text-decoration: none;
+        font-weight: 500;
 
         &:hover {
           text-decoration: underline;
@@ -540,7 +542,7 @@
     }
 
     .blog-article {
-      h3 a {
+      a {
         color: white !important;
       }
 
@@ -549,11 +551,11 @@
       }
 
       .tags a {
-        color: white !important;
+        color: $black !important;
       }
 
       .posted-by {
-        color: white !important;
+        color: $black !important;
       }
     }
 
