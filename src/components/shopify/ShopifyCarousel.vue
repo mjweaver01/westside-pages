@@ -457,6 +457,8 @@
 
   // Product-specific styling adjustments
   .product-info {
+    padding: 1em;
+
     h5 {
       margin-bottom: 8px;
       font-size: 16px;
@@ -498,7 +500,6 @@
       flex: 0 0 auto;
     }
 
-    .product-info,
     .blog-info {
       flex: 1;
       display: flex;
