@@ -24,6 +24,8 @@ export interface Props {
     | 'VENDOR'
   reverse?: boolean
   linkUrl?: string
+  invert?: boolean
+  infinite?: boolean
 }
 
 const {
@@ -39,6 +41,8 @@ const {
   sortKey = 'BEST_SELLING',
   reverse = false,
   linkUrl = '/collections/all',
+  invert = false,
+  infinite = false,
 } = Astro.props
 
 const settings: CarouselSettings = {
@@ -50,6 +54,8 @@ const settings: CarouselSettings = {
   primaryButton,
   noTopPadding,
   noBottomPadding,
+  invert,
+  infinite,
 }
 
 // Fetch products from Shopify

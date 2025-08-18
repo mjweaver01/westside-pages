@@ -342,6 +342,12 @@
       spaceBetween: isBlog ? 16 : 20,
       loop: props.settings.infinite || false,
 
+      // Ensure touch/swipe is enabled on mobile
+      touchRatio: 1,
+      touchAngle: 45,
+      grabCursor: true,
+      allowTouchMove: true,
+
       navigation: {
         nextEl: `.js-sw-n-${componentId.value}`,
         prevEl: `.js-sw-p-${componentId.value}`,
@@ -654,7 +660,7 @@
   }
 
   .swiper-pagination {
-    padding-bottom: 1.25em;
+    padding-bottom: 1em;
   }
 
   // Show navigation and pagination after Swiper is loaded
