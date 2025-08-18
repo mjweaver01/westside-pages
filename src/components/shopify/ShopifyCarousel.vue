@@ -653,6 +653,10 @@
     transition: all 0.3s ease;
   }
 
+  .swiper-pagination {
+    padding-bottom: 1.25em;
+  }
+
   // Show navigation and pagination after Swiper is loaded
   .swiper:not(.swiper-loading) {
     .swiper-button-next,
